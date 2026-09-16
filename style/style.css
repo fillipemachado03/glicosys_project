@@ -1,0 +1,741 @@
+/* ===== Reset básico ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --verde: #4d694e;
+  --verde-escuro: #3e5540;
+  --verde-claro: #5c7a5d;
+  --creme: #fdf6e3;
+  --creme-card: #fffaf0;
+  --amarelo-fundo: #fff3d5;
+  --borda: #e6dcc0;
+  --texto-escuro: #2f3a2f;
+  --texto-cinza: #6b6357;
+  --texto-cinza-claro: #8a8272;
+
+  --verde-badge-bg: #dcefdc;
+  --verde-badge-texto: #2f6b3c;
+
+  --laranja-badge-bg: #fbe6c8;
+  --laranja-badge-texto: #b5651d;
+
+  --vermelho-badge-bg: #fbdede;
+  --vermelho-badge-texto: #b3261e;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--texto-escuro);
+  background: var(--creme);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+input, select {
+  font-family: inherit;
+}
+
+/* ===== Layout com sidebar ===== */
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--verde);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.sidebar-logo .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.paciente-card {
+  background: var(--verde-claro);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.paciente-card .rotulo {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+
+.paciente-card .nome {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.paciente-card .info {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.sidebar-nav {
+  flex: 1;
+}
+
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.sidebar-nav li a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav li a.ativo {
+  background: var(--creme-card);
+  color: var(--verde);
+  font-weight: 600;
+}
+
+.sidebar-nav .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.sidebar-sair {
+  border-top: #8f9b8f 1px solid;
+}
+
+.sidebar-sair .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar-sair a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===== Conteúdo principal ===== */
+.conteudo {
+  flex: 1;
+  padding: 32px 40px;
+}
+
+.cabecalho-pagina {
+  margin-bottom: 24px;
+}
+
+.cabecalho-pagina h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cabecalho-pagina p {
+  color: var(--texto-cinza);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.cabecalho-flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* ===== Botões ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-primario {
+  background: var(--verde);
+  color: #fff;
+}
+
+.btn-primario:hover {
+  background: var(--verde-escuro);
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  padding: 12px;
+}
+
+/* ===== Cards genéricos ===== */
+.card {
+  background: var(--creme-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.card + .card {
+  margin-top: 20px;
+}
+
+.card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* ===== KPIs do painel ===== */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.kpi-card {
+  background: var(--creme-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.kpi-topo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--texto-cinza);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.kpi-topo .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--verde);
+}
+
+.kpi-valor {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.kpi-valor span {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.kpi-legenda {
+  font-size: 12px;
+  color: var(--texto-cinza-claro);
+  margin-top: 4px;
+}
+
+/* ===== Listas (medições / refeições recentes) ===== */
+.lista-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.lista-item:last-child {
+  border-bottom: none;
+}
+
+.lista-item .data {
+  width: 90px;
+  font-size: 12px;
+  color: var(--texto-cinza);
+  flex-shrink: 0;
+}
+
+.lista-item .principal {
+  flex: 1;
+}
+
+.lista-item .valor {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lista-item .subtexto {
+  font-size: 12px;
+  color: var(--texto-cinza);
+  margin-top: 2px;
+}
+
+/* Refeições recentes (painel) usam layout um pouco diferente */
+.refeicao-recente {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.refeicao-recente:last-child {
+  border-bottom: none;
+}
+
+.refeicao-recente-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.refeicao-recente .titulo {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.refeicao-recente .subtexto {
+  font-size: 13px;
+  color: var(--texto-cinza);
+  margin-top: 2px;
+}
+
+.refeicao-recente .rodape {
+  font-size: 12px;
+  color: var(--texto-cinza-claro);
+  margin-top: 4px;
+}
+
+/* ===== Badges de status ===== */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-verde {
+  background: var(--verde-badge-bg);
+  color: var(--verde-badge-texto);
+}
+
+.badge-laranja {
+  background: var(--laranja-badge-bg);
+  color: var(--laranja-badge-texto);
+}
+
+.badge-vermelho {
+  background: var(--vermelho-badge-bg);
+  color: var(--vermelho-badge-texto);
+}
+
+/* ===== Tabelas ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-cinza);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--borda);
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--borda);
+  font-size: 14px;
+  vertical-align: top;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td .subtexto {
+  display: block;
+  font-size: 12px;
+  color: var(--texto-cinza-claro);
+  margin-top: 2px;
+}
+
+.btn-excluir {
+  background: none;
+  color: var(--texto-cinza-claro);
+  padding: 4px;
+}
+
+.btn-excluir .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-excluir:hover {
+  color: var(--vermelho-badge-texto);
+}
+
+/* ===== Página de Refeições ===== */
+.resumo-badges {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.refeicao-card {
+  background: var(--creme-card);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--verde);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.refeicao-card.ig-medio {
+  border-left-color: #d99a2b;
+}
+
+.refeicao-card.ig-alto {
+  border-left-color: #c0392b;
+}
+
+.refeicao-card-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.refeicao-card .titulo {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.refeicao-card .meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--texto-cinza-claro);
+  margin-bottom: 8px;
+}
+
+.refeicao-card .meta .icon {
+  width: 12px;
+  height: 12px;
+  vertical-align: -1px;
+  margin-right: 3px;
+}
+
+.refeicao-card .descricao {
+  font-size: 14px;
+  color: var(--texto-escuro);
+}
+
+.refeicao-card .aviso {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--vermelho-badge-texto);
+  margin-top: 8px;
+}
+
+.refeicao-card .aviso .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ===== Página de Alimentos (IG) ===== */
+.categorias-ig {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.categoria-card {
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--borda);
+}
+
+.categoria-card.baixo {
+  background: var(--verde-badge-bg);
+  border-color: #bfe0bf;
+}
+
+.categoria-card.medio {
+  background: var(--laranja-badge-bg);
+  border-color: #eecb96;
+}
+
+.categoria-card.alto {
+  background: var(--vermelho-badge-bg);
+  border-color: #edb9b9;
+}
+
+.categoria-card .titulo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.categoria-card.baixo .titulo { color: var(--verde-badge-texto); }
+.categoria-card.medio .titulo { color: var(--laranja-badge-texto); }
+.categoria-card.alto .titulo { color: var(--vermelho-badge-texto); }
+
+.categoria-card .faixa {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.categoria-card .descricao {
+  font-size: 13px;
+  color: var(--texto-escuro);
+}
+
+.filtros {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.campo-busca {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--creme-card);
+  font-size: 14px;
+}
+
+.filtro-botoes {
+  display: flex;
+  gap: 6px;
+  background: var(--creme-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.filtro-botoes button {
+  background: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-cinza);
+}
+
+.filtro-botoes button.ativo {
+  background: var(--verde);
+  color: #fff;
+}
+
+/* ===== Página de Perfil ===== */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.campo label .icon {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  margin-right: 4px;
+  color: var(--verde);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--creme-card);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.campo .ajuda {
+  font-size: 12px;
+  color: var(--texto-cinza-claro);
+  margin-top: 6px;
+}
+
+.form-largura-total {
+  grid-column: 1 / -1;
+}
+
+/* ===== Autenticação (login / cadastro) ===== */
+.auth-tela {
+  display: flex;
+  min-height: 100vh;
+}
+
+.auth-lado-verde {
+  width: 45%;
+  background: var(--verde);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+.auth-lado-verde .sidebar-logo {
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+.auth-lado-verde h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.auth-lado-verde p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.auth-lado-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amarelo-fundo);
+}
+
+.auth-card {
+  width: 380px;
+}
+
+.auth-card .sidebar-logo {
+  color: var(--verde);
+  margin-bottom: 28px;
+}
+
+.auth-card h1 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.auth-card > p {
+  color: var(--texto-cinza);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.campo-senha {
+  position: relative;
+}
+
+.campo-senha .icon {
+  position: absolute;
+  right: 14px;
+  top: 38px;
+  width: 18px;
+  height: 18px;
+  color: var(--texto-cinza-claro);
+  cursor: pointer;
+}
+
+.auth-rodape {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 18px;
+}
+
+.auth-rodape a {
+  color: var(--verde);
+  font-weight: 600;
+}
+
+.auth-demo {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px dashed var(--borda);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.auth-demo .titulo {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.auth-demo p {
+  font-size: 13px;
+  color: var(--texto-cinza);
+}
+
+.form-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}

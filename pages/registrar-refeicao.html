@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>GlicoSys - Registrar Refeição</title>
+<link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      GlicoSys
+    </div>
+
+    <div class="paciente-card">
+      <div class="rotulo">Paciente</div>
+      <div class="nome" id="sidebar-nome">—</div>
+      <div class="info" id="sidebar-info">—</div>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="painel.html">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Painel
+      </a></li>
+      <li><a href="glicemia.html">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        Glicemia
+      </a></li>
+      <li><a href="refeicoes.html" class="ativo">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2v7c0 1-1 2-2 2s-2-1-2-2V2M14 11v11M6 2v9c0 1 1 2 2 2h0v9"/></svg>
+        Refeições
+      </a></li>
+      <li><a href="alimentos.html">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/></svg>
+        Alimentos (IG)
+      </a></li>
+      <li><a href="perfil.html">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+        Meu Perfil
+      </a></li>
+    </ul>
+
+    <div class="sidebar-sair">
+      <a href="login.html" id="link-sair">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Sair
+      </a>
+    </div>
+  </aside>
+
+  <main class="conteudo">
+
+    <div class="cabecalho-pagina">
+      <h1>Registrar Refeição</h1>
+      <p>Adicione uma nova refeição e seus alimentos</p>
+    </div>
+
+    <div class="card">
+      <form action="#" method="post" id="form-refeicao">
+
+        <div class="campo">
+          <label for="nome">Nome da refeição</label>
+          <select id="nome" name="nome">
+            <option value="cafe-da-manha">Café da manhã</option>
+            <option value="almoco">Almoço</option>
+            <option value="lanche">Lanche</option>
+            <option value="jantar">Jantar</option>
+            <option value="ceia">Ceia</option>
+          </select>
+        </div>
+
+        <div class="form-linha">
+          <div class="campo">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data">
+          </div>
+          <div class="campo">
+            <label for="hora">Hora</label>
+            <input type="time" id="hora" name="hora">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label>Alimentos da refeição</label>
+          <p class="ajuda">Selecione o alimento cadastrado em Alimentos (IG) e informe a quantidade consumida. Os carboidratos da porção de referência são ajustados automaticamente para a quantidade informada.</p>
+        </div>
+
+        <div id="itens-container"></div>
+
+        <button type="button" class="btn btn-full" id="btn-adicionar-alimento">+ Adicionar alimento</button>
+
+        <div class="card" style="margin-top:16px; margin-bottom:16px;">
+          <h2>Estimativa da refeição</h2>
+          <div class="lista-item">
+            <div class="principal">
+              <div class="valor" id="cg-total-valor">Carga Glicêmica total: 0</div>
+              <div class="subtexto" id="cg-total-subtexto">Potencial de elevação glicêmica: baixo</div>
+            </div>
+            <span class="badge badge-verde" id="cg-total-badge">CG baixa</span>
+          </div>
+          <p class="subtexto">Estimativa baseada na carga glicêmica dos alimentos informados. Não é uma previsão exata da glicemia — fatores individuais também influenciam a resposta pós-prandial.</p>
+        </div>
+
+        <div class="campo">
+          <label for="descricao">Observação (opcional)</label>
+          <textarea id="descricao" name="descricao" rows="2" placeholder="Ex: comeu devagar, praticou atividade física antes"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primario btn-full">Salvar Refeição</button>
+
+      </form>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="../js/store.js"></script>
+<script src="../js/comum.js"></script>
+<script src="../js/registrar-refeicao.js"></script>
+</body>
+</html>
