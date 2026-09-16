@@ -127,6 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
     lista.push(registro);
     Store.salvarRefeicoes(usuario.id, lista);
 
-    window.location.href = 'refeicoes.html';
+    window.location.href = 'refeicoes.php';
   });
 });
