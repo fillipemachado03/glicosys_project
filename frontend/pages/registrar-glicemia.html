@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>GlicoSys - Glicemia</title>
+<title>GlicoSys - Registrar Glicemia</title>
 <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
@@ -54,29 +54,56 @@
 
   <main class="conteudo">
 
-    <div class="cabecalho-flex">
-      <div class="cabecalho-pagina">
-        <h1>Registro de Glicemia</h1>
-        <p>Acompanhe seus níveis de glicose ao longo do tempo</p>
-      </div>
-      <a href="registrar-glicemia.html" class="btn btn-primario">+ Registrar</a>
+    <div class="cabecalho-pagina">
+      <h1>Registrar Glicemia</h1>
+      <p>Adicione uma nova medição de glicose</p>
     </div>
 
     <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Hora</th>
-            <th>Mg/dL</th>
-            <th>Status</th>
-            <th>Contexto</th>
-            <th>Variação</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="tabela-corpo"></tbody>
-      </table>
+      <form action="backend\registrar_glicemia.php" method="post">
+
+        <div class="form-linha">
+          <div class="campo">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data">
+          </div>
+          <div class="campo">
+            <label for="hora">Hora</label>
+            <input type="time" id="hora" name="hora">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="valor">Valor (mg/dL)</label>
+          <input type="number" id="valor" name="valor" placeholder="Ex: 96">
+        </div>
+
+        <div class="campo">
+          <label for="contexto">Contexto</label>
+          <select id="contexto" name="contexto">
+            <option value="jejum">Jejum</option>
+            <option value="pre-prandial">Pré-Prandial</option>
+            <option value="pos-prandial">Pós-Prandial</option>
+            <option value="antes-dormir">Antes de dormir</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="refeicao">Refeição relacionada (opcional)</label>
+          <select id="refeicao" name="refeicao">
+            <option value="">Nenhuma</option>
+          </select>
+          <p class="ajuda">Ao vincular uma refeição, você pode identificar depois qual medição corresponde a ela.</p>
+        </div>
+
+        <div class="campo">
+          <label for="observacao">Observação (opcional)</label>
+          <input type="text" id="observacao" name="observacao" placeholder="Ex: Estresse no trabalho">
+        </div>
+
+        <button type="submit" class="btn btn-primario btn-full">Salvar Medição</button>
+
+      </form>
     </div>
 
   </main>
@@ -85,6 +112,6 @@
 
 <script src="../js/store.js"></script>
 <script src="../js/comum.js"></script>
-<script src="../js/glicemia.js"></script>
+<script src="../js/registrar-glicemia.js"></script>
 </body>
 </html>

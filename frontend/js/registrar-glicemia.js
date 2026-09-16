@@ -42,6 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
     lista.push(registro);
     Store.salvarGlicemias(usuario.id, lista);
 
-    window.location.href = 'glicemia.html';
+    window.location.href = 'glicemia.php';
   });
 });

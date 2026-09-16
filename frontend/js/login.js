@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Se já está logado, vai direto para o painel
   if (Store.obterUsuarioAtual()) {
-    window.location.href = 'painel.html';
+    window.location.href = 'painel.php';
     return;
   }
 
@@ -37,6 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     Store.criarSessao(usuario.id);
-    window.location.href = 'painel.html';
+    window.location.href = 'painel.php';
   });
 });

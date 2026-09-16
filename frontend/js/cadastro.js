@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   if (Store.obterUsuarioAtual()) {
-    window.location.href = 'painel.html';
+    window.location.href = 'painel.php';
     return;
   }
 
@@ -59,6 +59,6 @@ document.addEventListener('DOMContentLoaded', function () {
     Store.semear(usuario.id);
 
     Store.criarSessao(usuario.id);
-    window.location.href = 'painel.html';
+    window.location.href = 'painel.php';
   });
 });
