@@ -739,3 +739,182 @@ td .subtexto {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+
+/* ===================================================== */
+/* ===== RESPONSIVIDADE — TABLETS (até 1024px) ========= */
+/* ===================================================== */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+    padding: 20px 16px;
+  }
+
+  .conteudo {
+    padding: 24px 28px;
+  }
+
+  .kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .categorias-ig {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-grid,
+  .form-linha {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-lado-verde {
+    width: 40%;
+    padding: 40px;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+/* ===================================================== */
+/* ===== RESPONSIVIDADE — CELULARES (até 600px) ========= */
+/* ===================================================== */
+@media (max-width: 600px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 14px 16px;
+  }
+
+  .sidebar-logo {
+    margin-bottom: 0;
+    margin-right: auto;
+  }
+
+  .paciente-card {
+    display: none;
+  }
+
+  .sidebar-nav {
+    flex: none;
+    width: 100%;
+    order: 3;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    overflow-x: auto;
+    gap: 4px;
+  }
+
+  .sidebar-nav li a {
+    white-space: nowrap;
+    margin-bottom: 0;
+  }
+
+  .sidebar-sair {
+    border-top: none;
+    order: 2;
+  }
+
+  .sidebar-sair a {
+    padding: 8px;
+  }
+
+  .conteudo {
+    padding: 18px 16px;
+  }
+
+  .cabecalho-flex {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cabecalho-flex .btn {
+    width: 100%;
+  }
+
+  .kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .categorias-ig {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .lista-item {
+    flex-wrap: wrap;
+  }
+
+  .lista-item .data {
+    width: auto;
+    margin-bottom: 4px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border-bottom: 1px solid var(--borda);
+    padding: 10px 0;
+  }
+
+  td {
+    border-bottom: none;
+    padding: 6px 0;
+  }
+
+  .filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .filtro-botoes {
+    justify-content: space-between;
+  }
+
+  .resumo-badges {
+    flex-wrap: wrap;
+  }
+
+  .refeicao-card-topo {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .auth-tela {
+    flex-direction: column;
+  }
+
+  .auth-lado-verde {
+    width: 100%;
+    padding: 32px 24px;
+  }
+
+  .auth-lado-form {
+    padding: 24px 16px;
+  }
+
+  .auth-card {
+    width: 100%;
+  }
+}
