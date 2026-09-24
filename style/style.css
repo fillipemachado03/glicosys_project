@@ -52,7 +52,6 @@ input, select {
   font-family: inherit;
 }
 
-/* ===== Layout com sidebar ===== */
 .app {
   display: flex;
   min-height: 100vh;
@@ -153,7 +152,6 @@ input, select {
   opacity: 0.9;
 }
 
-/* ===== Conteúdo principal ===== */
 .conteudo {
   flex: 1;
   padding: 32px 40px;
@@ -181,7 +179,6 @@ input, select {
   margin-bottom: 24px;
 }
 
-/* ===== Botões ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -207,7 +204,6 @@ input, select {
   padding: 12px;
 }
 
-/* ===== Cards genéricos ===== */
 .card {
   background: var(--creme-card);
   border: 1px solid var(--borda);
@@ -225,7 +221,6 @@ input, select {
   margin-bottom: 16px;
 }
 
-/* ===== KPIs do painel ===== */
 .kpis {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -274,7 +269,6 @@ input, select {
   margin-top: 4px;
 }
 
-/* ===== Listas (medições / refeições recentes) ===== */
 .lista-item {
   display: flex;
   align-items: center;
@@ -309,7 +303,6 @@ input, select {
   margin-top: 2px;
 }
 
-/* Refeições recentes (painel) usam layout um pouco diferente */
 .refeicao-recente {
   padding: 14px 0;
   border-bottom: 1px solid var(--borda);
@@ -342,7 +335,6 @@ input, select {
   margin-top: 4px;
 }
 
-/* ===== Badges de status ===== */
 .badge {
   display: inline-block;
   padding: 4px 10px;
@@ -367,7 +359,6 @@ input, select {
   color: var(--vermelho-badge-texto);
 }
 
-/* ===== Tabelas ===== */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -416,7 +407,6 @@ td .subtexto {
   color: var(--vermelho-badge-texto);
 }
 
-/* ===== Página de Refeições ===== */
 .resumo-badges {
   display: flex;
   gap: 10px;
@@ -488,7 +478,6 @@ td .subtexto {
   height: 14px;
 }
 
-/* ===== Página de Alimentos (IG) ===== */
 .categorias-ig {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -578,7 +567,6 @@ td .subtexto {
   color: #fff;
 }
 
-/* ===== Página de Perfil ===== */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -715,34 +703,12 @@ td .subtexto {
   font-weight: 600;
 }
 
-.auth-demo {
-  margin-top: 20px;
-  padding: 16px;
-  border: 1px dashed var(--borda);
-  border-radius: 10px;
-  text-align: center;
-}
-
-.auth-demo .titulo {
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.auth-demo p {
-  font-size: 13px;
-  color: var(--texto-cinza);
-}
-
 .form-linha {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
-/* ===================================================== */
-/* ===== RESPONSIVIDADE — TABLETS (até 1024px) ========= */
-/* ===================================================== */
 @media (max-width: 1024px) {
   .sidebar {
     width: 200px;
@@ -777,9 +743,6 @@ td .subtexto {
   }
 }
 
-/* ===================================================== */
-/* ===== RESPONSIVIDADE — CELULARES (até 600px) ========= */
-/* ===================================================== */
 @media (max-width: 600px) {
   .app {
     flex-direction: column;
