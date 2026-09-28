@@ -84,7 +84,7 @@
 </div>
 
 <script src="../js/store.js"></script>
-<script src="../js/comum.js"></script>
+<!-- <script src="../js/comum.js"></script> -->
 <script src="../js/glicemia.js"></script>
 </body>
 </html>

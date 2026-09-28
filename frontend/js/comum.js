@@ -7,10 +7,10 @@
 document.addEventListener('DOMContentLoaded', function () {
   var usuario = Store.obterUsuarioAtual();
 
-  if (!usuario) {
-    window.location.href = 'login.html';
-    return;
-  }
+  // if (!usuario) {
+  //   window.location.href = 'login.html';
+  //   return;
+  // }
 
   var perfil = Store.obterPerfil(usuario.id);
 
@@ -21,10 +21,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var linkSair = document.getElementById('link-sair');
   if (linkSair) {
-    linkSair.addEventListener('click', function (evento) {
-      evento.preventDefault();
-      Store.encerrarSessao();
-      window.location.href = 'login.html';
-    });
+
+// ISSO DA PROBLEMA COM O PHP, NAO RECONHECE E MANDA PRO LOGIN NOVAMENTE
+
+
+    // linkSair.addEventListener('click', function (evento) {
+    //   evento.preventDefault();
+    //   Store.encerrarSessao();
+    //   // window.location.href = 'login.html';
+    // });
   }
 });

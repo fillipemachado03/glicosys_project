@@ -733,6 +733,12 @@ td .subtexto {
   font-size: 13px;
   color: var(--texto-cinza);
 }
+.erro-auth{
+color: #b3261e;
+font-size: 13px;
+margin-top: -8px;
+margin-bottom: 14px;
+}
 
 .form-linha {
   display: grid;

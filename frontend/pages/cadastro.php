@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <title>GlicoSys - Criar conta</title>
 <link rel="stylesheet" href="../style/style.css">
+<?php
+require_once '../../backend/includes/cadastro_view.inc.php';
+require_once '../../backend/includes/config_session.inc.php';
+?>
 </head>
 <body>
 
@@ -28,8 +32,11 @@
       <h1>Criar conta</h1>
       <p>Preencha seus dados para começar.</p>
 
-      <form action="backend\cadastro.php">
-        <div class="campo">
+      <form action="../../backend\cadastro.php" method="post">
+        <?php
+        signup_input(); //TODO
+        ?>
+        <!-- <div class="campo">
           <label for="nome">Nome completo</label>
           <input type="text" id="nome" placeholder="Maria Silva">
         </div>
@@ -37,33 +44,40 @@
         <div class="campo">
           <label for="email">E-mail</label>
           <input type="email" id="email" placeholder="seu@email.com">
-        </div>
+        </div> -->
 
         <div class="campo campo-senha">
           <label for="senha">Senha</label>
-          <input type="password" id="senha" placeholder="mín. 6 caracteres">
+          <input type="password" id="senha" name='pwd' placeholder="mín. 6 caracteres">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
 
         <div class="form-linha">
           <div class="campo">
             <label for="idade">Idade</label>
-            <input type="number" id="idade" placeholder="Ex: 45">
+            <input type="number" id="idade" name='idade' placeholder="Ex: 45">
           </div>
           <div class="campo">
             <label for="tipo-dm">Tipo DM</label>
-            <select id="tipo-dm">
-              <option>Tipo 1</option>
-              <option>Tipo 2</option>
+            <select name='dm'  id="tipo-dm">
+              <option value="1">Tipo 1</option>
+              <option value="2">Tipo 2</option>
             </select>
           </div>
         </div>
 
         <div class="campo">
           <label for="medico">Médico responsável (opcional)</label>
-          <input type="text" id="medico" placeholder="Dr. Nome Sobrenome">
+          <input type="text" id="medico" name='medico' placeholder="Dr. Nome Sobrenome">
         </div>
 
+          
+
+  <div class="erro-auth">
+    <?php
+    check_signup_errors();
+    ?>
+  </div>
         <button type="submit" class="btn btn-primario btn-full">Criar conta</button>
       </form>
 
@@ -73,7 +87,7 @@
 
 </div>
 
-<script src="../js/store.js"></script>
-<script src="../js/cadastro.js"></script>
+<!-- <script src="../js/store.js"></script>
+<script src="../js/cadastro.js"></script> -->
 </body>
 </html>

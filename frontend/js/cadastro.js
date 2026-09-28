@@ -7,15 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   var form = document.querySelector('.auth-card form');
-  var botao = form.querySelector('button');
 
-  var erroEl = document.createElement('p');
-  erroEl.className = 'erro-auth';
-  erroEl.style.color = '#b3261e';
-  erroEl.style.fontSize = '13px';
-  erroEl.style.marginTop = '-8px';
-  erroEl.style.marginBottom = '14px';
-  form.insertBefore(erroEl, botao);
+
+  var erroEl = document.querySelector('.erro-auth');
 
   form.addEventListener('submit', function (evento) {
     evento.preventDefault();
@@ -58,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Toda conta nova entra com dados de exemplo, como avisado na tela de login
     Store.semear(usuario.id);
 
-    Store.criarSessao(usuario.id);
-    window.location.href = 'painel.php';
+    // Store.criarSessao(usuario.id);
+    // window.location.href = 'painel.php';
   });
 });
