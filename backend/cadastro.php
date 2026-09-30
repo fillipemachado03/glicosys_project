@@ -33,6 +33,14 @@ if(mb_strlen($pwd)<6){
 $errors['short_pwd'] = 'A senha deve ter ao menos 6 caracteres.';
 }
 
+if(is_DM_INvalid($DM)){
+$errors['dm_invalid'] = 'O tipo de diabetes é inválida';
+}
+
+if(is_age_invalid($age)){
+$errors['age_invalid'] = 'A idade é inválida';
+}
+
 require_once 'includes/config_session.inc.php';
 
 if($errors){
@@ -49,6 +57,13 @@ die();
 
 }
 create_user($pdo, $username, $pwd, $email, $age, $DM, $medico);
+
+$result = get_user_by_email($pdo, $email);
+
+$_SESSION['user_id'] = $result['id_users'];
+$_SESSION['user_username'] = htmlspecialchars($result['nome']);
+$_SESSION['user_DM'] = $result['tipo_diabetes'];
+$_SESSION['last_regeneration'] = time();
 
 $pdo= null;
 $stmt = null;

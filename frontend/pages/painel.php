@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <title>GlicoSys - Painel</title>
 <link rel="stylesheet" href="../style/style.css">
+<?php
+require_once '../../backend/includes/config_session.inc.php';
+
+if(!isset($_SESSION['user_id'])){
+  header('Location: ../../backend/logoff.php');
+  die();
+}
+?>
 </head>
 <body>
 
@@ -17,8 +25,8 @@
 
     <div class="paciente-card">
       <div class="rotulo">Paciente</div>
-      <div class="nome" id="sidebar-nome">—</div>
-      <div class="info" id="sidebar-info">—</div>
+      <div class="nome" id="sidebar-nome"><?php echo $_SESSION['user_username'];?></div>
+      <div class="info" id="sidebar-info">DM Tipo <?php echo $_SESSION['user_DM'];?></div>
     </div>
 
     <ul class="sidebar-nav">
@@ -34,7 +42,7 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2v7c0 1-1 2-2 2s-2-1-2-2V2M14 11v11M6 2v9c0 1 1 2 2 2h0v9"/></svg>
         Refeições
       </a></li>
-      <li><a href="alimentos.html">
+      <li><a href="alimentos.php">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/></svg>
         Alimentos (IG)
       </a></li>
@@ -45,7 +53,7 @@
     </ul>
 
     <div class="sidebar-sair">
-      <a href="login.html" id="link-sair">
+      <a href="../../backend/logoff.php" id="link-sair">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
         Sair
       </a>
@@ -55,8 +63,9 @@
   <main class="conteudo">
 
     <div class="cabecalho-pagina">
-      <h1 id="saudacao">Olá</h1>
-      <p id="meta-texto">Carregando...</p>
+      <h1 id="saudacao">Olá, <?php echo $_SESSION['user_username'];?></h1>
+      <p id="meta-texto">Diabetes tipo <?php echo $_SESSION['user_DM'];?> · Meta Glicêmica: </p>
+    
     </div>
 
     <div class="kpis">

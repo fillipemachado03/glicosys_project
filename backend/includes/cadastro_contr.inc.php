@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require_once 'cadastro_model.inc.php';
 
-function is_input_empty(string $username, string $pwd, string $email, int $age, int $DM)
+function is_input_empty(string $username, string $pwd, string $email, int $age, int $DM) :bool
 {
     if (empty($username) || empty($pwd) || empty($email) || empty($age) || empty($DM)) {
         return true;
@@ -12,7 +12,7 @@ function is_input_empty(string $username, string $pwd, string $email, int $age, 
     return false;
 }
 
-function is_email_invalid(string $email)
+function is_email_invalid(string $email) :bool
 {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return true;
@@ -20,7 +20,7 @@ function is_email_invalid(string $email)
     return false;
 }
 
-function is_email_registered(PDO $pdo, string $email)
+function is_email_registered(PDO $pdo, string $email) :bool
 {
     if (get_email($pdo, $email) === strtolower($email)) {
         return true;
@@ -28,15 +28,23 @@ function is_email_registered(PDO $pdo, string $email)
     return false;
 }
 
-function is_DM_valid(int $DM)
+function is_DM_INvalid(int $DM) :bool
 {
-    if ($DM == 1 || $DM == 2) {
-        return true;
+    if ($DM === 1 || $DM === 2) {
+        return false;
     }
-    return false;
+    return true;
 }
 
-function get_birth_year(int $age)
+function is_age_invalid(int $age) :bool
+{
+    if($age < 0 || $age > 150){
+        return true;
+    }
+        return false;
+}
+
+function get_birth_year(int $age) :int
 {
     return (int)date('Y') - $age;
 }
