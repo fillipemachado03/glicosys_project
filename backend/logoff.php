@@ -8,5 +8,5 @@ unset($_SESSION['last_regeneration']);
 $pdo= null;
 $stmt = null;
 
-header('Location: ../frontend/pages/login.html');
+header('Location: ../frontend/pages/login.php');
 die();

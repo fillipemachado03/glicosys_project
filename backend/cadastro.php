@@ -1,7 +1,7 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD'] !== 'POST'){
-    header('Location: ../frontend/pages/cadastro');
+    header('Location: ../frontend/pages/cadastro.php');
     die();
 }
 
@@ -51,11 +51,10 @@ $signup_data = ['nome' => $username, 'email' => $email];
 $_SESSION['signup_data'] = $signup_data;
 
 
-    header('Location: ../frontend/pages/cadastro');
+    header('Location: ../frontend/pages/cadastro.php');
 die();
-
-
 }
+
 create_user($pdo, $username, $pwd, $email, $age, $DM, $medico);
 
 $result = get_user_by_email($pdo, $email);

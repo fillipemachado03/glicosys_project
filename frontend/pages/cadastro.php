@@ -34,7 +34,7 @@ require_once '../../backend/includes/config_session.inc.php';
 
       <form action="../../backend\cadastro.php" method="post">
         <?php
-        signup_input(); //TODO
+        signup_input();
         ?>
         <!-- <div class="campo">
           <label for="nome">Nome completo</label>
@@ -81,7 +81,7 @@ require_once '../../backend/includes/config_session.inc.php';
         <button type="submit" class="btn btn-primario btn-full">Criar conta</button>
       </form>
 
-      <p class="auth-rodape">Já tem conta? <a href="login.html">Entrar</a></p>
+      <p class="auth-rodape">Já tem conta? <a href="login.php">Entrar</a></p>
     </div>
   </div>
 

@@ -5,6 +5,10 @@
 <title>GlicoSys - Entrar</title>
 <link rel="stylesheet" href="../style/style.css">
 </head>
+<?
+require_once '../../backend/includes/login_view.inc.php';
+require_once '../../backend/includes/config_session.inc.php';
+?>
 <body>
 
 <div class="auth-tela">
@@ -27,19 +31,35 @@
 
       <h1>Entrar na conta</h1>
       <p>Acesse seu painel de controle glicêmico.</p>
-
       <form action="backend\login.php">
-        <div class="campo">
+      
+      <?php
+      login_input();
+      ?>  
+      
+      <!-- <div class="campo">
           <label for="email">E-mail</label>
-          <input type="email" id="email" placeholder="seu@email.com">
-        </div>
+          <input type="email" id="email" name='email' placeholder="seu@email.com">
+        </div> -->
 
         <div class="campo campo-senha">
           <label for="senha">Senha</label>
-          <input type="password" id="senha" placeholder="••••••">
+          <input type="password" id="senha" name='senha' placeholder="••••••">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
         </div>
 
+         <div class="erro-auth">
+          <?php
+          check_login_errors();
+          ?>
+        </div>
+              <button type="submit" class="btn btn-primario btn-full">Criar conta</button>
+            </form>
+
+            <p class="auth-rodape">Já tem conta? <a href="login.php">Entrar</a></p>
+          </div>
+        </div>
+        
         <button type="submit" class="btn btn-primario btn-full">Entrar</button>
       </form>
 
