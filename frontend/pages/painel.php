@@ -112,7 +112,7 @@ if(!isset($_SESSION['user_id'])){
 </div>
 
 <script src="../js/store.js"></script>
-<script src="../js/comum.js"></script>
+<!-- <script src="../js/comum.js"></script> -->
 <script src="../js/painel.js"></script>
 </body>
 </html>

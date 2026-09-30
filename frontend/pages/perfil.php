@@ -53,7 +53,7 @@ if(!isset($_SESSION['user_id'])){
     </ul>
 
     <div class="sidebar-sair">
-      <a href="login.html" id="link-sair">
+      <a href="../../backend/logoff.php" id="link-sair">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
         Sair
       </a>
@@ -120,7 +120,7 @@ if(!isset($_SESSION['user_id'])){
 </div>
 
 <script src="../js/store.js"></script>
-<script src="../js/comum.js"></script>
+<!-- <script src="../js/comum.js"></script> -->
 <script src="../js/perfil.js"></script>
 </body>
 </html>
