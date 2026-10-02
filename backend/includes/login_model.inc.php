@@ -8,6 +8,7 @@ $stmt->bindParam(':email', $email);
 $stmt->execute();
 $results = $stmt->fetch(PDO::FETCH_ASSOC);
 return $results['id_users'] ? $results : null;
-}
+} 
 
 
+ 

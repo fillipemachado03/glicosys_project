@@ -5,12 +5,12 @@
 <title>GlicoSys - Entrar</title>
 <link rel="stylesheet" href="../style/style.css">
 </head>
-<?
+<?php
 require_once '../../backend/includes/login_view.inc.php';
 require_once '../../backend/includes/config_session.inc.php';
 ?>
 <body>
-
+ 
 <div class="auth-tela">
 
   <div class="auth-lado-verde">
@@ -31,7 +31,7 @@ require_once '../../backend/includes/config_session.inc.php';
 
       <h1>Entrar na conta</h1>
       <p>Acesse seu painel de controle glicêmico.</p>
-      <form action="backend\login.php">
+      <form action="../../backend\login.php" method="POST">
       
       <?php
       login_input();
@@ -53,21 +53,15 @@ require_once '../../backend/includes/config_session.inc.php';
           check_login_errors();
           ?>
         </div>
-              <button type="submit" class="btn btn-primario btn-full">Criar conta</button>
-            </form>
-
-            <p class="auth-rodape">Já tem conta? <a href="login.php">Entrar</a></p>
-          </div>
-        </div>
-        
-        <button type="submit" class="btn btn-primario btn-full">Entrar</button>
+ <button type="submit" class="btn btn-primario btn-full">Entrar</button>
       </form>
-
-      <p class="auth-rodape">Não tem conta? <a href="cadastro.php">Cadastre-se</a></p>
+       <p class="auth-rodape">Não tem conta? <a href="cadastro.php">Cadastre-se</a></p>
 
       <div class="auth-demo">
         <div class="titulo">Demonstração</div>
         <p>Crie uma conta para explorar o sistema com dados de exemplo.</p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -75,6 +69,6 @@ require_once '../../backend/includes/config_session.inc.php';
 </div>
 
 <script src="../js/store.js"></script>
-<script src="../js/login.js"></script>
+<!-- <script src="../js/login.js"></script> -->
 </body>
 </html>

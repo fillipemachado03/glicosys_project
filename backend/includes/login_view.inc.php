@@ -10,7 +10,7 @@ function check_login_errors()
         }
         unset($_SESSION['errors_login']);
     }
-}
+} 
 
 function login_input(){
 if(isset(['login_data']['email']) && !isset($_SESSION['errors_login']['email_registered']) && !isset($_SESSION['errors_login']['invalid_email'])
