@@ -11,7 +11,7 @@ function get_email(PDO $pdo, string $email) :array|null
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
     return $results ? $results['email'] : null;
 }
-
+ 
 function get_medic_id_by_name(PDO $pdo, string $medic_name) :array|null
 {
     $query = 'SELECT id_medicos from medicos where nome = :nome';

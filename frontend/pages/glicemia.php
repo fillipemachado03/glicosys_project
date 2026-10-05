@@ -67,7 +67,7 @@ if(!isset($_SESSION['user_id'])){
         <h1>Registro de Glicemia</h1>
         <p>Acompanhe seus níveis de glicose ao longo do tempo</p>
       </div>
-      <a href="registrar-glicemia.html" class="btn btn-primario">+ Registrar</a>
+      <a href="registrar-glicemia.php" class="btn btn-primario">+ Registrar</a>
     </div>
 
     <div class="card">

@@ -67,7 +67,7 @@ if(!isset($_SESSION['user_id'])){
         <h1>Registro de Refeições</h1>
         <p>Monitore a carga glicêmica estimada das suas refeições</p>
       </div>
-      <a href="registrar-refeicao.html" class="btn btn-primario">+ Registrar</a>
+      <a href="registrar-refeicao.php" class="btn btn-primario">+ Registrar</a>
     </div>
 
     <div class="resumo-badges" id="resumo-badges"></div>

@@ -57,11 +57,10 @@ die();
 }
 
 create_user($pdo, $username, $pwd, $email, $age, $DM, $medico);
-
-$pdo= null;
-$stmt = null;
-
 header("Location: ../frontend/pages/painel.php");
+
+// $pdo= null;
+// $stmt = null;
 die();
 }catch(PDOException $e){
     die('Query failed: '. $e->getMessage());

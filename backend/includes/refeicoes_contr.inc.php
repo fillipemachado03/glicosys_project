@@ -1,8 +1,11 @@
 <?php
-require_once 'backend\includes\refeicao_model.inc.php';
+declare(strict_types=1);
+require_once 'refeicao_model.inc.php';
 
-function get_CG($alimentoName, $carb){
-$alimento = get_alimento_by_name($alimentoName); //TODO
+function get_CG(PDO $pdo, string $alimentoName, float $grams){
+$alimento = get_alimento_by_name($pdo ,$alimentoName); //TODO
 $ig = $alimento['ig'];
-return ($ig*$carb)/100;
+$carb_by_gram = $alimento['carb_por_grama'];
+
+return ($ig*($carb_by_gram*$grams)/100);
 }

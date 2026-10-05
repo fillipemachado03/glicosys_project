@@ -2,14 +2,14 @@
    Permite adicionar vários alimentos e calcula a Carga Glicêmica (CG) em tempo real. */
 
 document.addEventListener('DOMContentLoaded', function () {
-  var usuario = Store.obterUsuarioAtual();
-  if (!usuario) return;
+  // var usuario = Store.obterUsuarioAtual();
+  // if (!usuario) return;
 
   var container = document.getElementById('itens-container');
   var botaoAdicionar = document.getElementById('btn-adicionar-alimento');
 
-  var dataInput = document.getElementById('data');
-  if (dataInput && !dataInput.value) dataInput.value = new Date().toISOString().slice(0, 10);
+  // var dataInput = document.getElementById('data');
+  // if (dataInput && !dataInput.value) dataInput.value = new Date().toISOString().slice(0, 10);
 
   function opcoesAlimentos(selecionadoId) {
     return Store.obterAlimentos().map(function (a) {
@@ -61,11 +61,11 @@ document.addEventListener('DOMContentLoaded', function () {
       '<div class="form-linha">' +
         '<div class="campo">' +
           '<label>Alimento</label>' +
-          '<select class="select-alimento">' + opcoesAlimentos(alimentoId) + '</select>' +
+          '<select name= alimento[] class="select-alimento">' + opcoesAlimentos(alimentoId) + '</select>' +
         '</div>' +
         '<div class="campo">' +
           '<label>Quantidade (g)</label>' +
-          '<input type="number" class="input-quantidade" min="0" value="' + (quantidade || 100) + '">' +
+          '<input type="number" name=porcoes[] class="input-quantidade" min="0" value="' + (quantidade || 100) + '">' +
         '</div>' +
       '</div>' +
       '<div class="campo item-info">' +
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var form = document.querySelector('#form-refeicao');
   form.addEventListener('submit', function (evento) {
-    evento.preventDefault();
+    // evento.preventDefault();
 
     var itens = [];
     var nomesAlimentos = [];

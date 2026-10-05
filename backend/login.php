@@ -48,13 +48,7 @@ try {
     $pdo = null;
     $stmt = null;
 
-
-
-
     header("Location: ../frontend/pages/painel.php");
-
-    $pdo = null;
-    $stmt = null;
     die();
 } catch (PDOException $e) {
     echo 'Query Failed: ' . $e->getMessage();

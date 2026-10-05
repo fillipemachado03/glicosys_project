@@ -5,6 +5,14 @@
 <title>GlicoSys - Registrar Glicemia</title>
 <link rel="stylesheet" href="../style/style.css">
 </head>
+<?php
+require_once '../../backend/includes/config_session.inc.php';
+
+if(!isset($_SESSION['user_id'])){
+  header('Location: ../../backend/logoff.php');
+  die();
+}
+?>
 <body>
 
 <div class="app">
@@ -15,10 +23,10 @@
       GlicoSys
     </div>
 
-    <div class="paciente-card">
+      <div class="paciente-card">
       <div class="rotulo">Paciente</div>
-      <div class="nome" id="sidebar-nome">—</div>
-      <div class="info" id="sidebar-info">—</div>
+      <div class="nome" id="sidebar-nome"><?php echo $_SESSION['user_username'];?></div>
+      <div class="info" id="sidebar-info">DM Tipo <?php echo $_SESSION['user_DM'];?></div>
     </div>
 
     <ul class="sidebar-nav">
@@ -34,7 +42,7 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2v7c0 1-1 2-2 2s-2-1-2-2V2M14 11v11M6 2v9c0 1 1 2 2 2h0v9"/></svg>
         Refeições
       </a></li>
-      <li><a href="alimentos.html">
+      <li><a href="alimentos.php">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z"/></svg>
         Alimentos (IG)
       </a></li>

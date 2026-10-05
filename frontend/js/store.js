@@ -9,27 +9,27 @@ var CHAVE_SESSAO = 'glicosys_sessao';
 /* Tabela de referência de Índice Glicêmico (IG) dos alimentos.
    porcao/unidade = porção de referência usada para os carboidratos informados. */
 var ALIMENTOS = [
-  { id: 'feijao-preto',        nome: 'Feijão preto cozido',    porcao: 150, unidade: 'g',  carboidratos: 24, ig: 30 },
-  { id: 'lentilha',             nome: 'Lentilha cozida',        porcao: 150, unidade: 'g',  carboidratos: 30, ig: 32 },
-  { id: 'leite-integral',       nome: 'Leite integral',         porcao: 250, unidade: 'ml', carboidratos: 12, ig: 31 },
-  { id: 'iogurte',              nome: 'Iogurte natural',        porcao: 200, unidade: 'g',  carboidratos: 9,  ig: 36 },
-  { id: 'maca',                 nome: 'Maçã',                   porcao: 120, unidade: 'g',  carboidratos: 16, ig: 36 },
-  { id: 'laranja',              nome: 'Laranja',                porcao: 130, unidade: 'g',  carboidratos: 15, ig: 40 },
-  { id: 'morango',              nome: 'Morango',                porcao: 120, unidade: 'g',  carboidratos: 8,  ig: 41 },
-  { id: 'uva',                  nome: 'Uva',                    porcao: 120, unidade: 'g',  carboidratos: 18, ig: 59 },
-  { id: 'mamao',                nome: 'Mamão',                  porcao: 150, unidade: 'g',  carboidratos: 13, ig: 60 },
-  { id: 'mel',                  nome: 'Mel',                    porcao: 25,  unidade: 'g',  carboidratos: 21, ig: 61 },
-  { id: 'banana',               nome: 'Banana madura',          porcao: 120, unidade: 'g',  carboidratos: 28, ig: 62 },
-  { id: 'arroz-branco',         nome: 'Arroz branco cozido',    porcao: 150, unidade: 'g',  carboidratos: 42, ig: 64 },
-  { id: 'beterraba',            nome: 'Beterraba cozida',       porcao: 80,  unidade: 'g',  carboidratos: 7,  ig: 64 },
-  { id: 'pao-forma',            nome: 'Pão de forma branco',    porcao: 30,  unidade: 'g',  carboidratos: 14, ig: 65 },
-  { id: 'tapioca',              nome: 'Tapioca',                porcao: 100, unidade: 'g',  carboidratos: 34, ig: 70 },
-  { id: 'melancia',             nome: 'Melancia',               porcao: 150, unidade: 'g',  carboidratos: 11, ig: 72 },
-  { id: 'pao-frances',          nome: 'Pão francês',            porcao: 50,  unidade: 'g',  carboidratos: 29, ig: 73 },
-  { id: 'pao-queijo',           nome: 'Pão de queijo',          porcao: 60,  unidade: 'g',  carboidratos: 26, ig: 74 },
-  { id: 'batata',               nome: 'Batata cozida',          porcao: 150, unidade: 'g',  carboidratos: 26, ig: 78 },
-  { id: 'arroz-instantaneo',    nome: 'Arroz branco inst.',     porcao: 150, unidade: 'g',  carboidratos: 45, ig: 87 },
-  { id: 'refrigerante',         nome: 'Refrigerante (cola)',    porcao: 350, unidade: 'ml', carboidratos: 37, ig: 90 }
+  { id: '2',        nome: 'Feijão preto cozido',    porcao: 150, unidade: 'g',  carboidratos: 24, ig: 30 },
+  { id: '3',             nome: 'Lentilha cozida',        porcao: 150, unidade: 'g',  carboidratos: 30, ig: 32 },
+  { id: '4',       nome: 'Leite integral',         porcao: 250, unidade: 'ml', carboidratos: 12, ig: 31 },
+  { id: '5',              nome: 'Iogurte natural',        porcao: 200, unidade: 'g',  carboidratos: 9,  ig: 36 },
+  { id: '6',                 nome: 'Maçã',                   porcao: 120, unidade: 'g',  carboidratos: 16, ig: 36 },
+  { id: '7',              nome: 'Laranja',                porcao: 130, unidade: 'g',  carboidratos: 15, ig: 40 },
+  { id: '8',              nome: 'Morango',                porcao: 120, unidade: 'g',  carboidratos: 8,  ig: 41 },
+  { id: '9',                  nome: 'Uva',                    porcao: 120, unidade: 'g',  carboidratos: 18, ig: 59 },
+  { id: '10',                nome: 'Mamão',                  porcao: 150, unidade: 'g',  carboidratos: 13, ig: 60 },
+  { id: '11',                  nome: 'Mel',                    porcao: 25,  unidade: 'g',  carboidratos: 21, ig: 61 },
+  { id: '12',               nome: 'Banana madura',          porcao: 120, unidade: 'g',  carboidratos: 28, ig: 62 },
+  { id: '1',         nome: 'Arroz branco cozido',    porcao: 150, unidade: 'g',  carboidratos: 42, ig: 64 },
+  { id: '13',            nome: 'Beterraba cozida',       porcao: 80,  unidade: 'g',  carboidratos: 7,  ig: 64 },
+  { id: '14',            nome: 'Pão de forma branco',    porcao: 30,  unidade: 'g',  carboidratos: 14, ig: 65 },
+  { id: '15',              nome: 'Tapioca',                porcao: 100, unidade: 'g',  carboidratos: 34, ig: 70 },
+  { id: '16',             nome: 'Melancia',               porcao: 150, unidade: 'g',  carboidratos: 11, ig: 72 },
+  { id: '17',          nome: 'Pão francês',            porcao: 50,  unidade: 'g',  carboidratos: 29, ig: 73 },
+  { id: '18',           nome: 'Pão de queijo',          porcao: 60,  unidade: 'g',  carboidratos: 26, ig: 74 },
+  { id: '19',               nome: 'Batata cozida',          porcao: 150, unidade: 'g',  carboidratos: 26, ig: 78 },
+  { id: '20',    nome: 'Arroz branco inst.',     porcao: 150, unidade: 'g',  carboidratos: 45, ig: 87 },
+  { id: '21',         nome: 'Refrigerante (cola)',    porcao: 350, unidade: 'ml', carboidratos: 37, ig: 90 }
 ];
 
 var Store = {
