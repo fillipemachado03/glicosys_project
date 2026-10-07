@@ -11,6 +11,8 @@ if(!isset($_SESSION['user_id'])){
   header('Location: ../../backend/logoff.php');
   die();
 }
+require_once '../../backend/refeicoes.php';
+require_once '../../backend/includes/refeicoes_view.inc.php';
 ?>
 </head>
 <body>
@@ -74,6 +76,12 @@ if(!isset($_SESSION['user_id'])){
 
     <div id="lista-refeicoes"></div>
 
+    <?php
+    if(isset($r)){
+      show_meals($r);
+    }
+    
+    ?>
   </main>
 
 </div>

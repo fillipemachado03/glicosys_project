@@ -13,17 +13,18 @@ return $results ? $results['nome'] : null;
 }
 
 function set_meal(PDO $pdo, int $user_id, string $titulo, string $observacao, int $cg, string $data, array $alimentos){
-$query = 'INSERT into refeicoes(user_fk, titulo, observacao, cg, data_horario) values(:user, :titulo, :obs, :cg, :data);';
+$query = 'INSERT into refeicoes(user_fk, titulo, observacao, cg, data_horario) values(:user, :titulo, :obs, :cg, :dataI);';
 $stmt = $pdo->prepare($query);
 
 $stmt->bindParam(':user', $user_id);
 $stmt->bindParam(':titulo', $titulo);
 $stmt->bindParam(':obs', $observacao);
 $stmt->bindParam(':cg', $cg);
-$stmt->bindParam(':data', $data);
+$stmt->bindParam(':dataI', $data);
 
-$stmt->execute();
+$result = $stmt->execute();
 $meal_id = (int) $pdo->lastInsertId();
+
 
 set_food_rel($pdo, $alimentos, $meal_id);
 }
@@ -74,21 +75,21 @@ function get_each_ig_carbs(PDO $pdo, array $alimentos): array
     $placeholders = [];
     $params = [];
 
-    foreach ($alimentos as $i => $alimento) {
+        foreach ($alimentos as $i => $alimento) {
 
-        $placeholder = ":id_$i";
+            $placeholder = ":id_$i";
 
-        $placeholders[] = $placeholder;
+            $placeholders[] = $placeholder;
 
-        $params[$placeholder] = $alimento['id'];
-    }
+            $params[$placeholder] = $alimento['id'];
+        }
 
-    $query = 'SELECT id_alimentos, ig, carb_por_grama
-              FROM alimentos
-              WHERE id_alimentos IN (' . implode(', ', $placeholders) . ')';
+        $query = 'SELECT id_alimentos, ig, carb_por_grama
+                FROM alimentos
+                WHERE id_alimentos IN (' . implode(', ', $placeholders) . ')';
 
-    $stmt = $pdo->prepare($query);
-    $stmt->execute($params);
+        $stmt = $pdo->prepare($query);
+        $stmt->execute($params);
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

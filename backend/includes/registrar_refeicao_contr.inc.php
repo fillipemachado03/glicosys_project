@@ -12,13 +12,15 @@ function normalize_array(array $alimentos_i, array $porcoes): array
             'id' => (int) $id_alimento,
             'porcao' => (float) ($porcoes[$index] ?? 0)
         ];
-    }
+    } 
 
     return $alimentos;
 }
 
-function create_meal($pdo, $user_id, $titulo, $obs, $data, $alimentos){
+function create_meal(PDO $pdo, INT $user_id, string $titulo, string $obs, string $data, array $alimentos){
     $cg =(int)get_total_cg($pdo, $alimentos);
+
+
 set_meal($pdo, $user_id, $titulo, $obs, $cg, $data, $alimentos);
 }
 
@@ -53,5 +55,5 @@ function get_total_cg(PDO $pdo, array $alimentos): float
         $cg += $cg_alimento;
     }
 
-    return $cg;
+    return round($cg);
 }

@@ -72,11 +72,11 @@ if(!isset($_SESSION['user_id'])){
         <div class="campo">
           <label for="nome">Nome da refeição</label>
           <select id="nome" name="nome">
-            <option value="cafe-da-manha">Café da manhã</option>
-            <option value="almoco">Almoço</option>
-            <option value="lanche">Lanche</option>
-            <option value="jantar">Jantar</option>
-            <option value="ceia">Ceia</option>
+            <option value="Cafe da manhã">Café da manhã</option>
+            <option value="Almoço">Almoço</option>
+            <option value="Lanche">Lanche</option>
+            <option value="Jantar">Jantar</option>
+            <option value="Canta">Ceia</option>
           </select>
         </div>
 

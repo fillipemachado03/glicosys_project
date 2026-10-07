@@ -68,7 +68,7 @@ if(!isset($_SESSION['user_id'])){
     </div>
 
     <div class="card">
-      <form>
+      <form action="../../backend/perfil.php" method="POST">
         <div class="campo form-largura-total">
           <label for="nome">Nome completo</label>
           <input type="text" id="nome">

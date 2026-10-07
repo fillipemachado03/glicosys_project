@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email = $_POST['email'];
 $pwd = $_POST['senha'];
 
+
 try {
     require_once 'includes/dbh.inc.php';
     require_once 'includes/login_contr.inc.php';

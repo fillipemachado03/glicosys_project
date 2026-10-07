@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST'){
 $username = $_POST['nome'];
 $pwd = $_POST['pwd'];
 $email = $_POST['email'];
-$age = (int) $_POST['idade'];
+$age = (int) $_POST['idade']; 
 $DM = (int) $_POST['dm'];
 $medico = $_POST['medico'];
 
