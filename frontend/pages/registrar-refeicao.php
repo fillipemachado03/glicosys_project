@@ -7,6 +7,7 @@
 </head>
 <?php
 require_once '../../backend/includes/config_session.inc.php';
+require_once '../../backend/includes/registrar_refeicao_view.inc.php';
 if(!isset($_SESSION['user_id'])){
   header('Location: ../../backend/logoff.php');
   die();
@@ -80,16 +81,18 @@ if(!isset($_SESSION['user_id'])){
           </select>
         </div>
 
-        <div class="form-linha">
-          <div class="campo">
-            <label for="data">Data</label>
-            <input type="date" id="data" name="data">
-          </div>
-          <div class="campo">
-            <label for="hora">Hora</label>
-            <input type="time" id="hora" name="hora">
-          </div>
-        </div>
+
+         <div class="form-linha">
+           <div class="campo">
+             <label for="data">Data</label>
+             <input type="date" id="data" name="data">
+           </div>
+
+           <div class="campo">
+             <label for="hora">Hora</label>
+             <input type="time" id="hora" name="hora">
+           </div>
+         </div>
 
 
 

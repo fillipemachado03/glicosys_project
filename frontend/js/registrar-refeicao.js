@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var container = document.getElementById('itens-container');
   var botaoAdicionar = document.getElementById('btn-adicionar-alimento');
 
-  // var dataInput = document.getElementById('data');
-  // if (dataInput && !dataInput.value) dataInput.value = new Date().toISOString().slice(0, 10);
+  var dataInput = document.getElementById('data');
+  if (dataInput && !dataInput.value) dataInput.value = new Date().toISOString().slice(0, 10);
 
   function opcoesAlimentos(selecionadoId) {
     return Store.obterAlimentos().map(function (a) {

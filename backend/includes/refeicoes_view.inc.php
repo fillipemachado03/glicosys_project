@@ -22,10 +22,11 @@ $hora =get_time_from_raw($raw);
 
 
 $id = $ref['id_refeicoes'];
-$titu = $ref['titulo'];
+$titu = (int)$ref['titulo'];
 $cg =$ref['cg'];
 $obs =$ref['observacao'];
 $food = $food.$ref['nome'];
+
 
 $bad='';
 switch ($cg) {
@@ -41,10 +42,11 @@ switch ($cg) {
 }
 
 
-$avs = ($bad == 'Alta') ? 'CORTA': '';
+$avs = ($bad == 'Alta') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
 
     }
    
+    
     
  echo(
       '<div class="refeicao-card">'.
