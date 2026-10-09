@@ -12,9 +12,9 @@ function show_meals(array $meals){
 
 $food = '';
 
-    foreach($meals as $ref){
+    foreach($meals as $i =>$ref){
       $raw = $ref['data_horario'];
-   
+  
 
 
 $data =get_data_from_raw($raw);
@@ -22,11 +22,14 @@ $hora =get_time_from_raw($raw);
 
 
 $id = $ref['id_refeicoes'];
-$titu = (int)$ref['titulo'];
+$titu =$ref['titulo'];
 $cg =$ref['cg'];
 $obs =$ref['observacao'];
-$food = $food.$ref['nome'];
+$food = $food.$ref['nome']. ', ';
 
+if(!isset($last_id)){
+$last_id ='';
+}
 
 $bad='';
 switch ($cg) {
@@ -43,12 +46,30 @@ switch ($cg) {
 
 
 $avs = ($bad == 'Alta') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
+var_dump('id');
+  var_dump($id);
+  var_dump('last');
+var_dump($last_id);
+var_dump('id array last');
+var_dump($meals[array_key_last($meals)]['id_refeicoes']);
+var_dump('array last');
+var_dump(array_key_last($meals));
+var_dump('i');
+var_dump($i);
+var_dump('++');
+var_dump("\n\n\n\n");
 
-    }
-   
-    
-    
- echo(
+if($id == $meals[array_key_last($meals)]['id_refeicoes'] && $i == array_key_last($meals) 
+  || ($last_id == $id && $id != $meals[++$i]['id_refeicoes']) ||
+ $last_id == '' && $id != $meals[++$i]['id_refeicoes']){
+
+
+
+if(isset($meals[++$i]['id_refeicoes'])){
+// var_dump($meals[++$i]['id_refeicoes']);
+}
+
+  echo(
       '<div class="refeicao-card">'.
       '<div class="refeicao-card-topo">' .
         '<div><div class="titulo">' . $titu . '</div></div>' .
@@ -66,6 +87,20 @@ $avs = ($bad == 'Alta') ? 'Considere alimentos de menor índice glicêmico nesta
       '<div class="descricao">' . $food . '</div>' .
       '<div class="subtexto">Potencial de elevação glicêmica: ' . $bad . '</div>' .
       ($obs ? '<div class="subtexto" style="margin-top:6px;">Obs.: ' . $obs . '</div>' : '') .
-      $avs)
-      .'</div>';
+      $avs
+      .'</div>');
+
+
+      $food='';
+
 }
+
+$last_id = $id;
+}
+ 
+
+    }
+   
+    
+    
+
