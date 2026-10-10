@@ -54,7 +54,37 @@ document.addEventListener('DOMContentLoaded', function () {
     badge.className = 'badge ' + classe.classe;
   }
 
+  function valoresSelecionados() {
+  return Array.prototype.map.call(container.querySelectorAll('.select-alimento'), function (s) {
+    return s.value;
+  });
+  }
+
+  function atualizarOpcoesDisponiveis() {
+    var selects = container.querySelectorAll('.select-alimento');
+    Array.prototype.forEach.call(selects, function (selectAtual) {
+      Array.prototype.forEach.call(selectAtual.options, function (opcao) {
+        var usadoEmOutraLinha = Array.prototype.some.call(selects, function (outro) {
+          return outro !== selectAtual && outro.value === opcao.value;
+        });
+        opcao.disabled = usadoEmOutraLinha;
+        opcao.hidden = usadoEmOutraLinha;
+      });
+    });
+  }
+
   function novaLinha(alimentoId, quantidade) {
+    if (!alimentoId) {
+    var usados = valoresSelecionados();
+    var livre = Store.obterAlimentos().find(function (a) {
+      return usados.indexOf(a.id) === -1;
+    });
+    if (!livre) {
+      alert('Todos os alimentos disponíveis já foram adicionados.');
+      return;
+    }
+    alimentoId = livre.id;
+}
     var linha = document.createElement('div');
     linha.className = 'item-alimento';
     linha.innerHTML =
@@ -72,8 +102,12 @@ document.addEventListener('DOMContentLoaded', function () {
         '<p class="ajuda"><span class="texto-info"></span> · <button type="button" class="btn-remover-item">Remover</button></p>' +
       '</div>';
     container.appendChild(linha);
+    atualizarOpcoesDisponiveis();
 
-    linha.querySelector('.select-alimento').addEventListener('change', function () { atualizarLinha(linha); });
+    linha.querySelector('.select-alimento').addEventListener('change', function () {
+      atualizarOpcoesDisponiveis(); 
+      atualizarLinha(linha); 
+    });
     linha.querySelector('.input-quantidade').addEventListener('input', function () { atualizarLinha(linha); });
     linha.querySelector('.btn-remover-item').addEventListener('click', function () {
       if (container.querySelectorAll('.item-alimento').length <= 1) {
@@ -81,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
       linha.remove();
+      atualizarOpcoesDisponiveis();
       atualizarEstimativa();
     });
 
