@@ -68,7 +68,8 @@ require_once '../../backend/includes/config_session.inc.php';
 
         <div class="campo">
           <label for="medico">Médico responsável (opcional)</label>
-          <input type="text" id="medico" name='medico' placeholder="Dr. Nome Sobrenome">
+<div class='medico_camp_div'>
+          <!--<input type="text" id="medico" name='medico' placeholder="Dr. Nome Sobrenome"> --> </div>
         </div>
 
           
@@ -87,7 +88,7 @@ require_once '../../backend/includes/config_session.inc.php';
 
 </div>
 
-<!-- <script src="../js/store.js"></script>
-<script src="../js/cadastro.js"></script> -->
+<!-- <script src="../js/store.js"></script> -->
+<script src="../js/cadastro.js"></script>
 </body>
 </html>
