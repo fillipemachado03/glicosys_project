@@ -1,10 +1,26 @@
 /* GlicoSys - lógica da tela de cadastro */
 
+async function get_medicos(){
+const res = await fetch("../../backend/Medicos.php");
+let medicos = await res.json(); 
+return JSON.parse(medicos);
+}
+
+function show_options(med){
+let op ="<option value='null'>nenhum</option>";
+forEach(med=>{
+op += "<option value= "+med.nome+">"+med.nome+"</option>"
+});
+return op;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
-  if (Store.obterUsuarioAtual()) {
-    window.location.href = 'painel.php';
-    return;
-  }
+  //if (Store.obterUsuarioAtual()) {
+  //  window.location.href = 'painel.php';
+ //   return;
+ // }
+
+let medicos = get_medicos();
 
   var form = document.querySelector('.auth-card form');
 
@@ -20,7 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var senha = document.getElementById('senha').value;
     var idade = document.getElementById('idade').value;
     var tipoDM = document.getElementById('tipo-dm').value;
-    var medico = document.getElementById('medico').value.trim();
+    let medico_camp = document.querySelector('.medico_camp_div');
+
+let op = show_option(medicos));
+let sel = "<select id= 'medico' name='medico'>"+op+"</select>"
+medico_camp.innerHTML=sel;
+
 
     if (!nome || !email || !senha) {
       erroEl.textContent = 'Preencha nome, e-mail e senha.';
