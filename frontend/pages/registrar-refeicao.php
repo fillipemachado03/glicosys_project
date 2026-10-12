@@ -137,6 +137,12 @@ if(!isset($_SESSION['user_id'])){
           <textarea id="descricao" name="descricao" rows="2" placeholder="Ex: comeu devagar, praticou atividade física antes"></textarea>
         </div>
 
+<div class="erro-auth">
+    <?php
+    check_ref_errors();
+    ?>
+  </div>
+
         <button type="submit" class="btn btn-primario btn-full">Salvar Refeição</button>
 
       </form>
