@@ -1,17 +1,35 @@
 /* GlicoSys - lógica da tela Meu Perfil */
 
-document.addEventListener('DOMContentLoaded', function () {
-  var usuario = Store.obterUsuarioAtual();
-  if (!usuario) return;
+async function get_medicos(){
+const res = await fetch("../../backend/Medicos.php");
+let medicos = await res.json(); 
+return JSON.parse(medicos);
+}
 
-  var perfil = Store.obterPerfil(usuario.id);
+function show_options(med){
+let op ="<option value='null'>nenhum</option>";
+forEach(med=>{
+op += "<option value= "+med.nome+">"+med.nome+"</option>"
+});
+return op;
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  //var usuario = Store.obterUsuarioAtual();
+ // if (!usuario) return;
+
+let medicos = get_medicos();
+
+
+  /*var perfil = Store.obterPerfil(usuario.id);
 
   document.getElementById('nome').value = perfil.nome || usuario.nome || '';
   document.getElementById('idade').value = perfil.idade || '';
   document.getElementById('tipo-dm').value = perfil.tipoDM || 'Tipo 1';
   document.getElementById('medico').value = perfil.medico || '';
   document.getElementById('min').value = perfil.metaMin || 70;
-  document.getElementById('max').value = perfil.metaMax || 140;
+  document.getElementById('max').value = perfil.metaMax || 140;*/
 
   var form = document.querySelector('.card form');
   form.addEventListener('submit', function (evento) {
@@ -25,14 +43,20 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    var novoPerfil = {
+    /* var novoPerfil = {
       nome: document.getElementById('nome').value.trim() || usuario.nome,
       idade: Number(document.getElementById('idade').value) || null,
       tipoDM: document.getElementById('tipo-dm').value,
       medico: document.getElementById('medico').value.trim(),
       metaMin: min,
       metaMax: max
-    };
+    */};
+
+let medico_camp = document.querySelector('.medico_camp_div');
+
+let op = show_option(medicos));
+let sel = "<select id= 'medico' name='medico'>"+op+"</select>"
+medico_camp.innerHTML=sel;
 
     Store.salvarPerfil(usuario.id, novoPerfil);
 
