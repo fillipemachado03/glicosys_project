@@ -115,6 +115,11 @@ perfil_input();
           </div>
           <div class="ajuda">Padrão ADA: 80–130 mg/dL (jejum) · &lt;180 mg/dL (pós-prandial)</div>
         </div>
+<div class="erro-auth">
+    <?php
+    check_perfil_errors();
+    ?>
+  </div>
 
         <button type="submit" class="btn btn-primario btn-full">Salvar Perfil</button>
       </form>
