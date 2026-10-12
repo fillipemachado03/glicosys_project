@@ -39,7 +39,7 @@ $raw = $glic['data_horario'];
 $data = get_data_from_raw($raw);
 $time = get_time_from_raw($raw);
 
-foreacho($glics as $glic){
+foreach($glics as $glic){
       '<div class="data">' . $data . '<br>' . $hora . '</div>' .
       '<div class="principal">' .
         '<div class="valor">' . $glic['nivel_glicose'] . ' mg/dL</div>' .
