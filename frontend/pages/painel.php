@@ -11,6 +11,9 @@ if(!isset($_SESSION['user_id'])){
   header('Location: ../../backend/logoff.php');
   die();
 }
+
+require_once '../../backend/painel.php';
+require_once '../../backend/includes/painel_view.inc.php';
 ?>
 </head>
 <body>
@@ -74,17 +77,18 @@ if(!isset($_SESSION['user_id'])){
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/></svg>
           Última Glicemia
         </div>
-        <div class="kpi-valor" id="kpi-ultima-valor">—</div>
-        <div class="kpi-legenda" id="kpi-ultima-legenda"></div>
+        <div class="kpi-valor" id="kpi-ultima-valor"><?php show_last_glic();?></div>
+        <div class="kpi-legenda" id="kpi-ultima-legenda"> show_last_glic_desc();</div>
       </div>
 
       <div class="kpi-card">
         <div class="kpi-topo">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+
           Média Glicêmica
         </div>
-        <div class="kpi-valor" id="kpi-media-valor">—</div>
-        <div class="kpi-legenda" id="kpi-media-legenda"></div>
+        <div class="kpi-valor" id="kpi-media-valor"><? show_avg_glic();?></div>
+        <div class="kpi-legenda" id="kpi-media-legenda"><?php show_total_glic();?></div>
       </div>
 
       <div class="kpi-card">
@@ -92,19 +96,27 @@ if(!isset($_SESSION['user_id'])){
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
           Tempo no Alvo
         </div>
-        <div class="kpi-valor" id="kpi-alvo-valor">—</div>
-        <div class="kpi-legenda" id="kpi-alvo-legenda"></div>
+        <div class="kpi-valor" id="kpi-alvo-valor"><?php show_perc_in_glic_target();
+?></div>
+        <div class="kpi-legenda" id="kpi-alvo-legenda"><?php show_glic_meta(); 
+?></div>
       </div>
     </div>
 
     <div class="card">
       <h2>Medições Recentes</h2>
-      <div id="lista-medicoes-recentes"></div>
+      <div id="lista-medicoes-recentes">
+<?php
+show_glic();
+?>
+</div>
     </div>
 
     <div class="card">
       <h2>Refeições Recentes</h2>
-      <div id="lista-refeicoes-recentes"></div>
+      <div id="lista-refeicoes-recentes">
+show_meals();
+</div>
     </div>
 
   </main>
