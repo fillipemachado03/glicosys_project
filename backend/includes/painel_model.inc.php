@@ -62,3 +62,15 @@ $results =$stmt->fetch(PDO::FETCH_ASSOC);
 return $results ? $results : null;
 };
 
+function get_glic_in_meta(PDO $pdo, int $id){
+$meta = get_glic_meta($pdo,$id);
+
+$query = "Select count(id_glicemia) from glicemia where nivel_glicemico in between :min and :max;";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(":min",$meta['min_meta_glicemica']);
+$stmt->bindParam(":max",$meta['max_meta_glicemica']);
+$stmt->execute();
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+return $results ? $results : null;
+}
+
