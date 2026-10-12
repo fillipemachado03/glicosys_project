@@ -19,6 +19,16 @@ require_once 'includes/registrar_refeicao_contr.inc.php';
 require_once 'includes/dbh.inc.php';
 require_once 'includes/config_session.inc.php';
 
+$erro = [];
+
+if(in_array("", $_POST['alimento'])){
+$erro[] = "Preencha todos os campos de alimentos";
+$_SESSION['ref_errors'] = $erro;
+header('Location: ../frontend/pages/registrar-refeicao.php');
+die();
+}
+
+
 $alimentos = normalize_array(
     $_POST['alimento'],
     $_POST['porcoes']
