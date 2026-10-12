@@ -38,7 +38,7 @@ require_once 'includes/config_session.inc.php';
 if($errors){
 $_SESSION['errors_perfil'] = $errors;
 
-$perfil_data = ['nome' => $username,];
+$perfil_data = ['nome' => $username];
 
 $_SESSION['perfil_data'] = $perfil_data;
 
