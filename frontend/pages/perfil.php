@@ -11,6 +11,7 @@ if(!isset($_SESSION['user_id'])){
   header('Location: ../../backend/logoff.php');
   die();
 }
+require_once '../../backend/includes/perfil_view.inc.php';
 ?>
 </head>
 <body>
@@ -71,7 +72,9 @@ if(!isset($_SESSION['user_id'])){
       <form action="../../backend/perfil.php" method="POST">
         <div class="campo form-largura-total">
           <label for="nome">Nome completo</label>
-          <input type="text" id="nome">
+          <?php
+perfil_input();
+?>
         </div>
 
         <div class="form-grid">
