@@ -77,20 +77,22 @@ if(!isset($_SESSION['user_id'])){
         <div class="form-grid">
           <div class="campo">
             <label for="idade">Idade</label>
-            <input type="number" id="idade">
+            <input type="number" name="nome" id="idade">
           </div>
           <div class="campo">
             <label for="tipo-dm">Tipo de Diabetes</label>
-            <select id="tipo-dm">
-              <option>Tipo 1</option>
-              <option>Tipo 2</option>
+            <select name= "tipo_dm" id="tipo-dm">
+              <option value="1">Tipo 1</option>
+              <option value="2">Tipo 2</option>
             </select>
           </div>
         </div>
 
         <div class="campo form-largura-total">
           <label for="medico">Médico responsável</label>
-          <input type="text" id="medico">
+          <div class='medico_camp_div'>
+          <!--<input type="text" id="medico" name='medico' placeholder="Dr. Nome Sobrenome"> --> </div>
+        </div>
         </div>
 
         <div class="campo form-largura-total">
@@ -101,11 +103,11 @@ if(!isset($_SESSION['user_id'])){
           <div class="form-grid">
             <div class="campo">
               <label for="min">Mínimo</label>
-              <input type="number" id="min">
+              <input type="number" id="min" name="meta_min">
             </div>
             <div class="campo">
               <label for="max">Máximo</label>
-              <input type="number" id="max">
+              <input type="number" id="max" name="meta_max">
             </div>
           </div>
           <div class="ajuda">Padrão ADA: 80–130 mg/dL (jejum) · &lt;180 mg/dL (pós-prandial)</div>
