@@ -115,7 +115,9 @@ show_glic();
     <div class="card">
       <h2>Refeições Recentes</h2>
       <div id="lista-refeicoes-recentes">
+<?php
 show_meals();
+?>
 </div>
     </div>
 
