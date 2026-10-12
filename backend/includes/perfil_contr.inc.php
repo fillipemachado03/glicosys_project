@@ -41,7 +41,7 @@ function get_birth_year(int $age) :int
 }
 
 
-function alter_user(PDO $pdo, int $id, string $username,int $age, int $DM, string $medic, int $min, int $max)
+function alter_usuario(PDO $pdo, int $id, string $username,int $age, int $DM, string $medic, int $min, int $max)
 {
     alter_user($pdo, $id, $username,$age, $DM, $medic, $min, $max);
 }
