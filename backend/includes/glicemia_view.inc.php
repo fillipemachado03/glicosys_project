@@ -24,7 +24,7 @@ foreach($glics as $glic){
       '<td>' . contextoHtml . '</td>' .
       '<td>' . (variacao !== undefined ? '<strong>' . (variacao > 0 ? '.' : '') . variacao . '</strong>' : '—') . '</td>' .
       '
-<form action="excluir_refeicao.php" method="POST">
+<form action="../del_glicemia.php" method="POST">
             <input
                 type="hidden"
                 name="id"
