@@ -75,9 +75,16 @@ if(isset($meals[++$i]['id_refeicoes'])){
         '<div><div class="titulo">' . $titu . '</div></div>' .
         '<div>' .
           '<span class="badge ' . $bad . '">' . $bad . ' · ' . $cg . '</span>' .
-          '<button class="btn-excluir" data-id="' . $id . '" title="Excluir">' .
+'<form action="../del_refeicoes.php" method="POST">
+            <input
+                type="hidden"
+                name="id"
+                value="<?= (int) $id ?>"
+            >'.
+        
+          '<button type= "submit" class="btn-excluir" data-id="' . $id . '" title="Excluir">' .
             '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>' .
-          '</button>' .
+          '</button> </form>' .
         '</div>' .
       '</div>' .
       '<div class="meta">' .
