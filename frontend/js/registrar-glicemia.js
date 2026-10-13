@@ -1,3 +1,28 @@
+
+async function get_ref(){
+const res = await fetch('../../backend/get_refeicoes
+php');
+let meals = await res.json();
+return JSON.parse(meals);
+}
+
+/*
+function show_options(ref){
+let op ="<option value='null'>nenhum</option>";
+forEach(ref=>{
+op += "<option value= "+ref.id_refeicoes+">"+ref.nome+"</option>"
+});
+return op;
+}
+*/
+
+function get_data(raw){
+return raw.split(" ")[0]; 
+}
+function get_time(raw){
+return raw.split(" ")[1];
+}
+
 /* GlicoSys - lógica do formulário Registrar Glicemia */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -5,11 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!usuario) return;
 
   var seletorRefeicao = document.getElementById('refeicao');
-  var refeicoes = Store.obterRefeicoes(usuario.id).slice().sort(Store.compararDataHoraDesc.bind(Store));
+  var refeicoes = get_ref();
   refeicoes.forEach(function (r) {
     var opcao = document.createElement('option');
-    opcao.value = r.id;
-    opcao.textContent = r.nome + ' · ' + Store.formatarDataBR(r.data) + ' · ' + (r.hora || '');
+    opcao.value = r.id_refeicoes;
+    opcao.textContent = r.nome + ' · ' + get_data(r.data_horario) + '' + get_time(r
+data_horario);
     seletorRefeicao.appendChild(opcao);
   });
 
