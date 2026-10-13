@@ -12,6 +12,8 @@ if(!isset($_SESSION['user_id'])){
   header('Location: ../../backend/logoff.php');
   die();
 }
+
+require_once '../../backend/includes/registrar_glicemia_view.inc.php';
 ?>
 <body>
 
@@ -108,6 +110,12 @@ if(!isset($_SESSION['user_id'])){
           <label for="observacao">Observação (opcional)</label>
           <input type="text" id="observacao" name="observacao" placeholder="Ex: Estresse no trabalho">
         </div>
+
+  <div class="erro-auth">
+    <?php
+    check_set_glic_errors();
+    ?>
+  </div>
 
         <button type="submit" class="btn btn-primario btn-full">Salvar Medição</button>
 
