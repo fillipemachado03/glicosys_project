@@ -6,10 +6,10 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST'){
 
 try{
 require_once 'includes/dbh.inc.php';
-require_once 'includes/get_glicemia_contr.inc.php';
-$glicemia = get_glicemia($pdo) ?? [];
+require_once 'includes/get_ref_contr.inc.php';
+$ref = get_meals($pdo) ?? [];
 
-echo json_encode($glicemia);
+echo json_encode($ref);
 }catch(PDOException $e){
 die("Query failed:".$e->getMessage);
 }
