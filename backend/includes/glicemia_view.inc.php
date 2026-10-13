@@ -23,7 +23,13 @@ foreach($glics as $glic){
       '<td><span class="badge ' . status.classe + '">' . status.rotulo . '</span></td>' .
       '<td>' . contextoHtml . '</td>' .
       '<td>' . (variacao !== undefined ? '<strong>' . (variacao > 0 ? '.' : '') . variacao . '</strong>' : '—') . '</td>' .
-      '<td><button class="btn-excluir" data-id="' . g.id . '" title="Excluir">' .
+      '
+<form action="excluir_refeicao.php" method="POST">
+            <input
+                type="hidden"
+                name="id"
+                value='.<?= (int) $glic['id_glicemia'] ?>'.
+            ><td><button type=submit class="btn-excluir" data-id="' . g.id . '" title="Excluir"></form>' .
         '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>' .
       '</button></td>');
 };
