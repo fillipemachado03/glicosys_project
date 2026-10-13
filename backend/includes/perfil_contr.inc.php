@@ -28,7 +28,7 @@ function is_age_invalid(int $age) :bool
 }
 
 function is_target_invalid(int $min, int $max) :bool {
-if($min <20 || $min >1500 || $max <20 || $max >1500){
+if($min <20 || $min >1500 || $max <20 || $max >1500 || $min>$max){
 return true;
 }
 return false;
