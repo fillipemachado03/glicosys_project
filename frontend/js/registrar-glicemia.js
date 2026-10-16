@@ -1,10 +1,18 @@
 
 async function get_ref(){
-const res = await fetch('../../backend/get_refeicoes
-php');
-let meals = await res.json();
-return JSON.parse(meals);
+  try{
+const res = await fetch('http://localhost/glicosys_project/backend/get_refeicoes.php', {
+  method: "POST"
+})
+        if (!res.ok) {
+            throw new Error(`Erro HTTP: ${res.status}`);
+        }
+
+let meals = await res.json()
+return meals;
+  }catch(error){console.log(error)}
 }
+get_ref().then(meals => console.log(meals));
 
 /*
 function show_options(ref){
@@ -34,8 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   refeicoes.forEach(function (r) {
     var opcao = document.createElement('option');
     opcao.value = r.id_refeicoes;
-    opcao.textContent = r.nome + ' · ' + get_data(r.data_horario) + '' + get_time(r
-data_horario);
+    opcao.textContent = r.nome + ' · ' + get_data(r.data_horario) + '' + get_time(r.data_horario);
     seletorRefeicao.appendChild(opcao);
   });
 

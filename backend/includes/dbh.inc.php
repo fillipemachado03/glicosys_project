@@ -1,8 +1,10 @@
 <?php
-$dsn = 'mysql:host=localhost;dbname=glicosys';
-
+$url ='localhost';
+$dbname='glicosys';
 $dbusername = 'root';
 $dbpassword = '';
+
+$dsn = 'mysql:host='.$url.';dbname='. $dbname;
 
 try {
     $pdo = new PDO($dsn, $dbusername, $dbpassword);

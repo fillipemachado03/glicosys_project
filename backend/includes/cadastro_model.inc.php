@@ -37,7 +37,7 @@ function get_user_by_email(PDO $pdo, string $email) :array|null
 
 function set_user(PDO $pdo, string $username, string $pwd, string $email, int $age, int $DM, string $medic)
 {
-    $query = 'INSERT into users(nome, email, senha_hash, data_de_nascimento, tipo_diabetes, medicos)
+    $query = 'INSERT into users(nome, email, senha_hash, data_de_nascimento, tipo_diabetes, medicos_fk)
 values (:nome, :email, :senha_hash, :data_de_nascimento, :tipo_diabetes, :medicos_fk)';
 
     $stmt = $pdo->prepare($query);

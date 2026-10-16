@@ -10,11 +10,12 @@ $pwd = $_POST['pwd'];
 $email = $_POST['email'];
 $age = (int) $_POST['idade']; 
 $DM = (int) $_POST['dm'];
-$medico = $_POST['medico'];
+$medico = $_POST['medico'] ?? '';
 
 try{
 require_once 'includes/dbh.inc.php';
 require_once 'includes/cadastro_contr.inc.php';
+
 
 $errors = [];
 

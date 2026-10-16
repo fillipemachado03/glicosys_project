@@ -1,12 +1,12 @@
 <?php
 declare(strict_types =1);
 
-function show_last_glic(int $glic){
-echo $glic. '</span>mg/dl</span>';
+function show_last_glic(array $glic){
+echo $glic['nivel_glicose']. '</span>mg/dl</span>';
 };
 
-function show_last_glic_desc(string $name, string $date){
-echo $name.' • '. $date;
+function show_last_glic_desc(array $glic){ 
+echo $glic['contexto'].' • '. $glic['data_horario_registro'];
 };
 
 function show_avg_glic(int $glic){
@@ -35,17 +35,18 @@ return substr($raw, 0, 10);
 
 function show_glic(array $glics){
 
-$raw = $glic['data_horario'];
+$raw = $glics['data_horario'];
 $data = get_data_from_raw($raw);
 $time = get_time_from_raw($raw);
 
 foreach($glics as $glic){
-      '<div class="data">' . $data . '<br>' . $hora . '</div>' .
+  echo(
+      '<div class="data">' . $data . '<br>' . $time . '</div>' .
       '<div class="principal">' .
         '<div class="valor">' . $glic['nivel_glicose'] . ' mg/dL</div>' .
         '<div class="subtexto">' . $glic['contexto'] . '</div>' .
       '</div>' .
-      '<span class="badge ' . status.classe . '">' . status.rotulo . '</span>';
+      '<span class="badge ' . 'status.classe' . '">' . 'status.rotulo' . '</span>');
 };
 
 
@@ -114,10 +115,10 @@ if(isset($meals[++$i]['id_refeicoes'])){
 }
 echo('<div class="refeicao-recente-topo">' .
         '<div class="titulo">' . $titu . '</div>' .
-        '<span class="badge ' . classe.classe . '">' . classe.rotulo . '</span>' .
+        '<span class="badge ' . 'classe.classe' . '">' . 'classe.rotulo' . '</span>' .
       '</div>' .
       '<div class="subtexto">' . $obs . '</div>' .
-      '<div class="rodape">' . $data . ' · ' . $hora . '</div>';);
+      '<div class="rodape">' . $data . ' · ' . $hora . '</div>');
 
       $food='';
 
@@ -129,6 +130,6 @@ $last_id = $id;
 
     }
 
-}
+
 
 

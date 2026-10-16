@@ -14,6 +14,8 @@ if(!isset($_SESSION['user_id'])){
 
 require_once '../../backend/painel.php';
 require_once '../../backend/includes/painel_view.inc.php';
+var_dump($glics);
+
 ?>
 </head>
 <body>
@@ -77,8 +79,8 @@ require_once '../../backend/includes/painel_view.inc.php';
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/></svg>
           Última Glicemia
         </div>
-        <div class="kpi-valor" id="kpi-ultima-valor"><?php show_last_glic();?></div>
-        <div class="kpi-legenda" id="kpi-ultima-legenda"> show_last_glic_desc();</div>
+        <div class="kpi-valor" id="kpi-ultima-valor"><?php show_last_glic((array)$last_glic);?></div>
+        <div class="kpi-legenda" id="kpi-ultima-legenda"><?php show_last_glic_desc($last_glic)?>;</div>
       </div>
 
       <div class="kpi-card">
@@ -87,8 +89,8 @@ require_once '../../backend/includes/painel_view.inc.php';
 
           Média Glicêmica
         </div>
-        <div class="kpi-valor" id="kpi-media-valor"><? show_avg_glic();?></div>
-        <div class="kpi-legenda" id="kpi-media-legenda"><?php show_total_glic();?></div>
+        <div class="kpi-valor" id="kpi-media-valor"><?php show_avg_glic($avg_glic);?></div>
+        <div class="kpi-legenda" id="kpi-media-legenda"><?php show_total_glic($avg_glic);?></div>
       </div>
 
       <div class="kpi-card">
