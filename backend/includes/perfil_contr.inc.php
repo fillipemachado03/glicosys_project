@@ -5,7 +5,7 @@ require_once 'perfil_model.inc.php';
 
 function is_input_empty(string $username,int $age, int $DM, int $min, int $max) :bool
 {
-    if (empty($username) || empty($age) || empty($DM|| empty(min) || empty(max)) {
+    if (empty($username) || empty($age) || empty($DM) || empty($min) || empty($max)) {
         return true;
     }
     return false;
@@ -44,4 +44,7 @@ function get_birth_year(int $age) :int
 function alter_usuario(PDO $pdo, int $id, string $username,int $age, int $DM, string $medic, int $min, int $max)
 {
     alter_user($pdo, $id, $username,$age, $DM, $medic, $min, $max);
+}
+function get_user(PDO $pdo, int $id){
+return get_model_user($pdo, $id);
 }

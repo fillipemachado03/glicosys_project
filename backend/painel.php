@@ -10,3 +10,4 @@ $glics = get_glicos($pdo, $id);
 $last_glic = get_last_glic($pdo, $id);
 $avg_glic = get_avg_glic($pdo, $id);
 $perc = get_perc_in_meta($pdo, $id);
+ 

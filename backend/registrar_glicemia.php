@@ -7,10 +7,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $data = $_POST['data'];
 $time = $_POST['hora'];
 $value = (int)$_POST['valor'];
-$cnxt = $_POST['contexto'];
+$cntx = $_POST['contexto'];
 $ref = $_POST['refeicao'];
 $obs = $_POST['observacao'];
-
+ 
 try{
 require_once 'includes/dbh.inc.php';
 require_once 'includes/registrar_glicemia_contr.inc.php';
@@ -25,9 +25,9 @@ if(is_value_invalid($value)){
 $errors['invalid_value'] = 'Valor inválido';
 }
 
-$data_time = normalize_data_time($data, $time);
+$date_time = normalize_data_time($data, $time);
 
-if(is_data_time_invalid($data_time)){
+if(is_data_time_invalid($date_time)){
 $errors['invalid_data_time'] = 'Data e hora inválidos';
 }
 
@@ -36,14 +36,14 @@ require_once 'includes/config_session.inc.php';
 if($errors){
 $_SESSION['errors_reg_glic'] = $errors;
 
-    header('Location: ../frontend/pages/glicemia.php');
+    header('Location: ../frontend/pages/registrar-glicemia.php');
 die();
 }
 
 
-create_glic($pdo, $date_time, $value, $cnxt, $ref, $obs);
-
+create_glic($pdo, $date_time, $value, $cntx, $ref, $obs, (int)$_SESSION['user_id']);
+    header('Location: ../frontend/pages/glicemia.php');
 }catch(PDOException $e){
-die("Query failed: ". $e->getMessage(););
+die("Query failed: ". $e->getMessage());
 }
 

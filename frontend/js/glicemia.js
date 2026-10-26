@@ -1,15 +1,32 @@
 /* GlicoSys - lógica da listagem de Glicemia */
+async function get_glicemia() {
+  try {
+    const res = await fetch("../../backend/get_glicemia.php", { method: "POST" });
+    if (!res.ok) {
+      throw new Error(`Erro HTTP: ${res.status}`);
+    }
+
+    let glic = await res.text();
+    console.log(glic);
+
+    return glic;
+  } catch (erro) {
+    console.log(erro);
+  }
+}
+get_glicemia().then(r=>console.log(r));
+
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
-  var usuario = Store.obterUsuarioAtual();
-  if (!usuario) return;
-  renderizarTabela(usuario);
-});
 
-function renderizarTabela(usuario) {
+async function renderizarTabela(usuario) {
   var perfil = Store.obterPerfil(usuario.id);
   var refeicoes = Store.obterRefeicoes(usuario.id);
-  var glicemias = Store.obterGlicemias(usuario.id);
+  var glicemias = await get_glicemia();
 
   /* calcula a variação (apenas para medições pós-prandiais, contra a medição anterior) */
   var ascendente = glicemias.slice().sort(Store.compararDataHoraAsc.bind(Store));

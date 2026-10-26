@@ -7,4 +7,4 @@ $stmt= $pdo->prepare($query);
 $stmt->bindParam(":glic_id", $glic_id);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
-}
+} 

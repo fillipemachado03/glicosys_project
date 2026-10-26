@@ -2,7 +2,7 @@
 declare(strict_types =1);
 
 function show_last_glic(array $glic){
-echo $glic['nivel_glicose']. '</span>mg/dl</span>';
+echo $glic['nivel_glicose']. '</span>mg/dl</span>'; 
 };
 
 function show_last_glic_desc(array $glic){ 
@@ -10,7 +10,7 @@ echo $glic['contexto'].' • '. $glic['data_horario_registro'];
 };
 
 function show_avg_glic(int $glic){
-echo $glic. '</span>mg/dl</span>';
+echo $glic. '</span>mg/dl</span>'; 
 };
 
 function show_total_glic(int $total_glic){

@@ -71,7 +71,6 @@ require_once '../../backend/includes/perfil_view.inc.php';
     <div class="card">
       <form action="../../backend/perfil.php" method="POST">
         <div class="campo form-largura-total">
-          <label for="nome">Nome completo</label>
           <?php
 perfil_input();
 ?>
@@ -80,11 +79,11 @@ perfil_input();
         <div class="form-grid">
           <div class="campo">
             <label for="idade">Idade</label>
-            <input type="number" name="nome" id="idade">
+            <input type="number" name="idade" id="idade">
           </div>
           <div class="campo">
             <label for="tipo-dm">Tipo de Diabetes</label>
-            <select name= "tipo_dm" id="tipo-dm">
+            <select name= "tipo_dm" id="tipo_dm">
               <option value="1">Tipo 1</option>
               <option value="2">Tipo 2</option>
             </select>

@@ -12,5 +12,5 @@ $medicos = get_medics($pdo) ?? [];
 
 echo json_encode($medicos);
 }catch(PDOException $e){
-die("Query failed:".$e->getMessage);
+die("Query failed:" .$e->getMessage());
 }

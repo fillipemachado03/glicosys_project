@@ -44,6 +44,8 @@ try {
     $_SESSION['user_id'] = $result['id_users'];
     $_SESSION['user_username'] = htmlspecialchars($result['nome']);
     $_SESSION['user_DM'] = $result['tipo_diabetes'];
+    $_SESSION['meta_min'] = (int) get_min($pdo, $_SESSION['user_id']);
+    $_SESSION['meta_max'] = (int) get_max($pdo, $_SESSION['user_id']);
     $_SESSION['last_regeneration'] = time();
 
     $pdo = null;

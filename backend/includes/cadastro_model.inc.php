@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function get_email(PDO $pdo, string $email) :array|null
+function get_email(PDO $pdo, string $email) :string|null
 {
     $query = 'SELECT email from users where email = :email';
     $stmt = $pdo->prepare($query);
@@ -12,7 +12,7 @@ function get_email(PDO $pdo, string $email) :array|null
     return $results ? $results['email'] : null;
 }
 
-function get_medic_id_by_name(PDO $pdo, string $medic_name) :array|null
+function get_medic_id_by_name(PDO $pdo, string $medic_name) :int|null
 {
     $query = 'SELECT id_medicos from medicos where nome = :nome';
     $stmt = $pdo->prepare($query);
@@ -23,7 +23,7 @@ function get_medic_id_by_name(PDO $pdo, string $medic_name) :array|null
 }
 
 
-function get_user_by_email(PDO $pdo, string $email) :array|null 
+function get_user_by_email(PDO $pdo, string $email) : ?array
 {
     $query = 'SELECT * from users where email = :email;';
 
@@ -31,7 +31,7 @@ function get_user_by_email(PDO $pdo, string $email) :array|null
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    return  $results['id_users'] ? $results : null;
+    return  $results ? $results : null;
 }
 
 

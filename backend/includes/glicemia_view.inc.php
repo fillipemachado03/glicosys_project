@@ -8,7 +8,7 @@ return substr($raw, 11, 9);
 function get_data_from_raw(string $raw){
 return substr($raw, 0, 10);
 }
-
+ 
 function show_glic(array $glics){
 
 $raw = $glics['data_horario'];

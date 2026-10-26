@@ -4,11 +4,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die();
 }
 
-$nome = $_POST['nome'];
+$username = $_POST['nome'];
 $idade = (int)$_POST['idade'];
 $tipo = (int)$_POST['tipo_dm'];
 $medico = (int)$_POST['medico'];
-$min_meta = (int)$_POST['min_eta'];
+$min_meta = (int)$_POST['min_meta'];
 $max_meta = (int)$_POST['max_meta'];
 
 try{
@@ -48,6 +48,14 @@ die();
 }
 
 alter_usuario($pdo, $_SESSION['user_id'], $username, $age, $DM, $medico, $min_meta, $max_meta);
+$result = get_user($pdo, (int)$_SESSION['user_id']);
+
+    $_SESSION['user_username'] = htmlspecialchars($result['nome']);
+    $_SESSION['user_DM'] = $result['tipo_diabetes'];
+    $_SESSION['meta_min'] = (int) get_min($pdo, $_SESSION['user_id']);
+    $_SESSION['meta_max'] = (int) get_max($pdo, $_SESSION['user_id']);
+    $_SESSION['last_regeneration'] = time();
+
 header("Location: ../frontend/pages/perfil.php");
 
 // $pdo= null;

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>GlicoSys - Painel</title>
-<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="../style/style.css"> 
 <?php
 require_once '../../backend/includes/config_session.inc.php';
 
@@ -14,8 +14,11 @@ if(!isset($_SESSION['user_id'])){
 
 require_once '../../backend/painel.php';
 require_once '../../backend/includes/painel_view.inc.php';
-var_dump($glics);
-
+  var_dump($glics);
+var_dump($perc);
+var_dump($ref);
+var_dump($last_glic);
+var_dump($avg_glic);
 ?>
 </head>
 <body>
@@ -79,8 +82,8 @@ var_dump($glics);
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/></svg>
           Última Glicemia
         </div>
-        <div class="kpi-valor" id="kpi-ultima-valor"><?php show_last_glic((array)$last_glic);?></div>
-        <div class="kpi-legenda" id="kpi-ultima-legenda"><?php show_last_glic_desc($last_glic)?>;</div>
+        <div class="kpi-valor" id="kpi-ultima-valor"><?php if(isset($last_glic)){show_last_glic((array)$last_glic);}?></div>
+        <div class="kpi-legenda" id="kpi-ultima-legenda"><?php if(isset($last_glic)){show_last_glic_desc($last_glic);}?></div>
       </div>
 
       <div class="kpi-card">
@@ -89,8 +92,8 @@ var_dump($glics);
 
           Média Glicêmica
         </div>
-        <div class="kpi-valor" id="kpi-media-valor"><?php show_avg_glic($avg_glic);?></div>
-        <div class="kpi-legenda" id="kpi-media-legenda"><?php show_total_glic($avg_glic);?></div>
+        <div class="kpi-valor" id="kpi-media-valor"><?php if(isset($avg_glic) && $avg_glic != null){show_avg_glic($avg_glic);}?></div>
+        <div class="kpi-legenda" id="kpi-media-legenda"><?php if(isset($avg_glic)&& $avg_glic != null){show_total_glic($avg_glic);}?></div>
       </div>
 
       <div class="kpi-card">
@@ -98,9 +101,9 @@ var_dump($glics);
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
           Tempo no Alvo
         </div>
-        <div class="kpi-valor" id="kpi-alvo-valor"><?php show_perc_in_glic_target();
+        <div class="kpi-valor" id="kpi-alvo-valor"><?php if(isset($perc)){show_perc_in_glic_target($perc);} 
 ?></div>
-        <div class="kpi-legenda" id="kpi-alvo-legenda"><?php show_glic_meta(); 
+        <div class="kpi-legenda" id="kpi-alvo-legenda"><?php if(isset($perc)){show_glic_meta();} 
 ?></div>
       </div>
     </div>
@@ -109,7 +112,8 @@ var_dump($glics);
       <h2>Medições Recentes</h2>
       <div id="lista-medicoes-recentes">
 <?php
-show_glic();
+if(isset($glics)){
+show_glic($glics);}
 ?>
 </div>
     </div>
@@ -118,7 +122,8 @@ show_glic();
       <h2>Refeições Recentes</h2>
       <div id="lista-refeicoes-recentes">
 <?php
-show_meals();
+if(isset($ref)){
+show_meals($ref);}
 ?>
 </div>
     </div>

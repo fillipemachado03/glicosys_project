@@ -17,9 +17,9 @@ return true;
 return false;
 }
 
-function is_input_empty(string $data, string $time, int $value, string $cntx, int ref, string $obs ){
+function is_input_empty(string $data, string $time, int $value, string $cntx, int $ref, string $obs ){
 
-if(empty($data)||empty($time)||empty($value)||empty($cntx)||empty($ref)||empty($obs)||){
+if(empty($data)||empty($time)||empty($value)||empty($cntx)||empty($ref)||empty($obs)){
 return true;
 }
 return false;
@@ -34,6 +34,6 @@ return false;
 
 
 
-function create_glic(PDO $pdo, string $date_time, int $value, string $cntx, int $ref, string $obs){
-set_glic($pdo, $date_time, $value, $cntx, $ref, $obs);
+function create_glic(PDO $pdo, string $date_time, int $value, string $cntx, int $ref, string $obs, $id){
+set_glic($pdo, $date_time, $value, $cntx, $ref, $obs, $id);
 }

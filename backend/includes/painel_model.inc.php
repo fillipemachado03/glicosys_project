@@ -9,7 +9,7 @@ $stmt->execute();
 
 $results = $stmt->fetch(PDO::FETCH_ASSOC);
 return $results ? $results : null;
-};
+}; 
 
 function get_avg_glic(PDO $pdo, int $id){
 $query='Select avg(nivel_glicose) from glicemia where user_fk = :id;';

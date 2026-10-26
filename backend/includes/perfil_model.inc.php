@@ -30,3 +30,12 @@ $medic_id = get_medic_id_by_name($pdo, $medic) ?? null;
 
     $stmt->execute();
 }
+
+function get_model_user(PDO $pdo, int $id) : array{
+$query ='SELECT * from users where id_users = :id';
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+return $results ? $results : null;
+} 

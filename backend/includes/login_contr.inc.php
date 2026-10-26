@@ -23,3 +23,10 @@ return false;
 function get_user_by_email(PDO $pdo, $email){
 return get_user($pdo, $email);
 }
+
+function get_min(PDO $pdo, int $id){
+return get_model_min($pdo, $id);
+}
+function get_max(PDO $pdo, int $id){
+return get_model_max($pdo, $id);
+}

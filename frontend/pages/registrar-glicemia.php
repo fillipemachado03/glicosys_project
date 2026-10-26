@@ -15,7 +15,7 @@ if(!isset($_SESSION['user_id'])){
 
 require_once '../../backend/includes/registrar_glicemia_view.inc.php';
 ?>
-<body>
+<body> 
 
 <div class="app">
 
@@ -70,7 +70,7 @@ require_once '../../backend/includes/registrar_glicemia_view.inc.php';
     </div>
 
     <div class="card">
-      <form action="backend\registrar_glicemia.php" method="post">
+      <form action="../../backend\registrar_glicemia.php" method="post">
 
         <div class="form-linha">
           <div class="campo">
@@ -126,8 +126,8 @@ require_once '../../backend/includes/registrar_glicemia_view.inc.php';
 
 </div>
 
-<script src="../js/store.js"></script>
-<script src="../js/comum.js"></script>
+<!-- <script src="../js/store.js"></script> -->
+<!-- <script src="../js/comum.js"></script> -->
 <script src="../js/registrar-glicemia.js"></script>
 </body>
 </html>
