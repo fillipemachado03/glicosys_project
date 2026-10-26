@@ -6,23 +6,24 @@ echo $glic['nivel_glicose']. '</span>mg/dl</span>';
 };
 
 function show_last_glic_desc(array $glic){ 
+  
 echo $glic['contexto'].' • '. $glic['data_horario_registro'];
 };
 
-function show_avg_glic(int $glic){
-echo $glic. '</span>mg/dl</span>'; 
+function show_avg_glic(array $glic){
+echo round((float)$glic['avg(nivel_glicose)']). '</span>mg/dl</span>'; 
 };
 
-function show_total_glic(int $total_glic){
-echo $total_glic. ' medições';
+function show_total_glic(array $total_glic){
+echo $total_glic['count(*)']. ' medições';
 };
 
 function show_perc_in_glic_target(float $glic){
-echo '%'.($glic*100);
+echo '% '.$glic;
 };
 
 function show_glic_meta(int $min, int $max){
-echo 'meta'.$min.'-'.$max.' </span>mg/dl</span>';
+echo 'Meta '.$min.'-'.$max.' </span>mg/dl</span>';
 };
 
 function get_time_from_raw(string $raw){
@@ -35,18 +36,21 @@ return substr($raw, 0, 10);
 
 function show_glic(array $glics){
 
-$raw = $glics['data_horario'];
+foreach($glics as $glic){
+$raw = $glic  ['data_horario_registro'];
 $data = get_data_from_raw($raw);
 $time = get_time_from_raw($raw);
 
-foreach($glics as $glic){
   echo(
+    '<div class= "lista-item">'.
       '<div class="data">' . $data . '<br>' . $time . '</div>' .
       '<div class="principal">' .
         '<div class="valor">' . $glic['nivel_glicose'] . ' mg/dL</div>' .
         '<div class="subtexto">' . $glic['contexto'] . '</div>' .
       '</div>' .
-      '<span class="badge ' . 'status.classe' . '">' . 'status.rotulo' . '</span>');
+      '<span class="badge ' . 'status.classe' . '">' . 'status.rotulo' . '</span>'.
+    '</div>'
+    );
 };
 
 

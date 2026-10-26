@@ -14,11 +14,12 @@ if(!isset($_SESSION['user_id'])){
 
 require_once '../../backend/painel.php';
 require_once '../../backend/includes/painel_view.inc.php';
-  var_dump($glics);
-var_dump($perc);
-var_dump($ref);
+  // var_dump($glics);
+// var_dump($perc);
+// var_dump($ref);
 var_dump($last_glic);
-var_dump($avg_glic);
+// var_dump($avg_glic);
+// var_dump($_SESSION);
 ?>
 </head>
 <body>
@@ -82,7 +83,7 @@ var_dump($avg_glic);
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/></svg>
           Última Glicemia
         </div>
-        <div class="kpi-valor" id="kpi-ultima-valor"><?php if(isset($last_glic)){show_last_glic((array)$last_glic);}?></div>
+        <div class="kpi-valor" id="kpi-ultima-valor"><?php if(isset($last_glic)){show_last_glic($last_glic);}else{echo'0 </span>mg/dl</span>';}?></div>
         <div class="kpi-legenda" id="kpi-ultima-legenda"><?php if(isset($last_glic)){show_last_glic_desc($last_glic);}?></div>
       </div>
 
@@ -103,7 +104,7 @@ var_dump($avg_glic);
         </div>
         <div class="kpi-valor" id="kpi-alvo-valor"><?php if(isset($perc)){show_perc_in_glic_target($perc);} 
 ?></div>
-        <div class="kpi-legenda" id="kpi-alvo-legenda"><?php if(isset($perc)){show_glic_meta();} 
+        <div class="kpi-legenda" id="kpi-alvo-legenda"><?php if(isset($perc)){show_glic_meta($_SESSION['meta_min'], $_SESSION['meta_max']);} 
 ?></div>
       </div>
     </div>

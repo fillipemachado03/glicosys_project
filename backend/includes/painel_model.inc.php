@@ -12,7 +12,7 @@ return $results ? $results : null;
 }; 
 
 function get_avg_glic(PDO $pdo, int $id){
-$query='Select avg(nivel_glicose) from glicemia where user_fk = :id;';
+$query='Select avg(nivel_glicose), count(*) from glicemia where user_fk = :id;';
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id',$id); 
 $stmt->execute();
@@ -21,12 +21,12 @@ return $results ? $results : null;
 };
 
 function get_total_glic(PDO $pdo, int $id){
-$query='select count(id_glicemia) from glicemia where user_fk = :id;';
+$query='select count(id_glicemia) total from glicemia where user_fk = :id;';
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id',$id);
 $stmt->execute();
 $results =$stmt->fetch(PDO::FETCH_ASSOC);
-return $results ? $results : null;
+return $results ? $results['total'] : null;
 };
 
 function get_meals(PDO $pdo, int $user_id){
@@ -49,7 +49,7 @@ $query='SELECT * from glicemia where user_fk = :id;';
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id',$id);
 $stmt->execute();
-$results=$stmt->fetch(PDO::FETCH_ASSOC);
+$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
 return $results ? $results : null;
 };
 
@@ -64,13 +64,14 @@ return $results ? $results : null;
 
 function get_glic_in_meta(PDO $pdo, int $id){
 $meta = get_glic_meta($pdo,$id);
+var_dump($meta);
 
-$query = "Select count(id_glicemia) from glicemia where nivel_glicose between :min and :max;";
+$query = "Select count(id_glicemia) as totalMeta from glicemia where nivel_glicose between :min and :max;";
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(":min",$meta['min_meta_glicemica']);
 $stmt->bindParam(":max",$meta['max_meta_glicemica']);
 $stmt->execute();
 $results = $stmt->fetch(PDO::FETCH_ASSOC);
-return $results ? $results : null;
+return $results ? $results['totalMeta'] : null;
 }
 

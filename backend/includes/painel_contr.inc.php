@@ -4,7 +4,12 @@ declare(strict_types =1);
 require_once 'painel_model.inc.php';
 
 function get_perc_in_meta(PDO $pdo, int $id){
-return ((int)get_glic_in_meta($pdo,$id) / (int)get_total_glic($pdo,$id))*100;
+    try {
+return round(((float)get_glic_in_meta($pdo,$id) / (float)get_total_glic($pdo,$id))*100);
+        
+    } catch (\Throwable $th) {
+        return 0;
+    }
 }
 
 function get_avg_glico(PDO $pdo, int $id){

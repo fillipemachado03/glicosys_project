@@ -91,6 +91,7 @@ require_once '../../backend/includes/registrar_glicemia_view.inc.php';
         <div class="campo">
           <label for="contexto">Contexto</label>
           <select id="contexto" name="contexto">
+            
             <option value="jejum">Jejum</option>
             <option value="pre-prandial">Pré-Prandial</option>
             <option value="pos-prandial">Pós-Prandial</option>

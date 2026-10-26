@@ -7,49 +7,59 @@ async function get_glicemia() {
     }
 
     let glic = await res.text();
-    console.log(glic);
+console.log(glic);
 
     return glic;
   } catch (erro) {
     console.log(erro);
   }
 }
+async function get_glic_target() {
+  try {
+    const res = await fetch("../../backend/get_glic_target.php", { method: "POST" });
+    if (!res.ok) {
+      throw new Error(`Erro HTTP: ${res.status}`);
+    }
+    let Tglic = await res.json();
+    return Tglic;
+  } catch (erro) {
+    console.log(erro);
+  }
+}
+
+get_glic_target().then(r=>{console.log(r);
+   let targetO = {min:r[0].min_meta_glicemica, max:r[0].max_meta_glicemica};
+  });
+
 get_glicemia().then(r=>console.log(r));
-
-
-
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
 
 async function renderizarTabela(usuario) {
-  var perfil = Store.obterPerfil(usuario.id);
-  var refeicoes = Store.obterRefeicoes(usuario.id);
-  var glicemias = await get_glicemia();
+  // var glicemias = await get_glicemia();
 
-  /* calcula a variação (apenas para medições pós-prandiais, contra a medição anterior) */
-  var ascendente = glicemias.slice().sort(Store.compararDataHoraAsc.bind(Store));
-  var variacoes = {};
-  var anterior = null;
-  ascendente.forEach(function (g) {
-    if (g.contexto === 'pos-prandial' && anterior) {
-      variacoes[g.id] = g.valor - anterior.valor;
-    }
-    anterior = g;
-  });
-
-  var descendente = glicemias.slice().sort(Store.compararDataHoraDesc.bind(Store));
   var corpo = document.getElementById('tabela-corpo');
+
   corpo.innerHTML = '';
 
-  if (!descendente.length) {
+  if (await get_glicemia()) {
     corpo.innerHTML = '<tr><td colspan="7" class="subtexto">Nenhuma medição registrada ainda.</td></tr>';
     return;
   }
 
+  let gs = await get_glicemia()
+
   descendente.forEach(function (g) {
-    var status = Store.classificarGlicemia(g.valor, perfil);
+    let status='';
+    switch(g.nivel_glicose){
+      case g.nivel_glicose > targetO.max && g.nivel_glicose-30 > targetO.max: status='alta'; break;
+      case g.nivel_glicose > targetO.max && g.nivel_glicose+30 < targetO.max: status='Elevada' ;break;
+      case g.nivel_glicose < targetO.max && g.nivel_glicose > targetO.min: status='No alvo'; break;
+      case g.nivel_glicose < targetO.min: status='Baixa'; break;
+    }
+    
     var refeicao = null;
     for (var i = 0; i < refeicoes.length; i++) {
       if (refeicoes[i].id === g.refeicaoId) { refeicao = refeicoes[i]; break; }
@@ -83,4 +93,4 @@ async function renderizarTabela(usuario) {
       renderizarTabela(usuario);
     });
   });
-}
+}})
