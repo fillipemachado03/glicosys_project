@@ -45,6 +45,7 @@ function alter_usuario(PDO $pdo, int $id, string $username,int $age, int $DM, st
 {
     alter_user($pdo, $id, $username,$age, $DM, $medic, $min, $max);
 }
+
 function get_user(PDO $pdo, int $id){
 return get_model_user($pdo, $id);
 }

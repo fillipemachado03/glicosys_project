@@ -5,11 +5,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $username = $_POST['nome'];
-$idade = (int)$_POST['idade'];
-$tipo = (int)$_POST['tipo_dm'];
-$medico = (int)$_POST['medico'];
-$min_meta = (int)$_POST['min_meta'];
-$max_meta = (int)$_POST['max_meta'];
+$age = (int)$_POST['idade'];
+$DM = (int)$_POST['tipo_dm'];
+$medico = $_POST['medico'];
+$min_meta = (int)$_POST['meta_min'];
+$max_meta = (int)$_POST['meta_max'];
 
 try{
 require_once 'includes/dbh.inc.php';
@@ -52,8 +52,8 @@ $result = get_user($pdo, (int)$_SESSION['user_id']);
 
     $_SESSION['user_username'] = htmlspecialchars($result['nome']);
     $_SESSION['user_DM'] = $result['tipo_diabetes'];
-    $_SESSION['meta_min'] = (int) get_min($pdo, $_SESSION['user_id']);
-    $_SESSION['meta_max'] = (int) get_max($pdo, $_SESSION['user_id']);
+    $_SESSION['meta_min'] = (int) $result['min_meta_glicemica'];
+    $_SESSION['meta_max'] = (int) $result['max_meta_glicemica'];
     $_SESSION['last_regeneration'] = time();
 
 header("Location: ../frontend/pages/perfil.php");

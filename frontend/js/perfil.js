@@ -8,7 +8,7 @@ async function get_medicos() {
     }
 
     let medicos = await res.json();
-    console.log(medicos);
+   
 
     return medicos;
   } catch (erro) {
@@ -24,11 +24,11 @@ o.textContent='nenhum';
 op.push(o);
 med.forEach(m=>{
 let nOp = document.createElement('option')
+
 nOp.value=m.nome;
 nOp.textContent=m.nome;
   op.push(nOp);
 });
-console.log(op)
 return op;
 }
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async function () {
  let medicoCamp = document.querySelector('.medico_camp_div');
 
 let op = await get_medicos().then(med=>show_options(med));
-console.log(op);
+
 let sel = document.createElement('select');
 sel.id='medico';
 sel.name='medico';
