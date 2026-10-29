@@ -17,9 +17,9 @@ require_once '../../backend/includes/painel_view.inc.php';
   // var_dump($glics);
 // var_dump($perc);
 // var_dump($ref);
-var_dump($last_glic);
+// var_dump($last_glic);
 // var_dump($avg_glic);
-// var_dump($_SESSION);
+var_dump($_SESSION);
 ?>
 </head>
 <body>
@@ -70,10 +70,9 @@ var_dump($last_glic);
   </aside>
 
   <main class="conteudo">
-
     <div class="cabecalho-pagina">
       <h1 id="saudacao">Olá, <?php echo $_SESSION['user_username'];?></h1>
-      <p id="meta-texto">Diabetes tipo <?php echo $_SESSION['user_DM'];?> · Meta Glicêmica: </p>
+      <p id="meta-texto">Diabetes tipo <?php echo $_SESSION['user_DM'];?> · Meta Glicêmica: <?php echo ($_SESSION['meta_min'])?>–<?php echo ($_SESSION['meta_max'])?> mg/dL</p>
     
     </div>
 
