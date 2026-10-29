@@ -2,7 +2,7 @@
 declare(strict_types =1);
 
 function show_last_glic(array $glic){
-echo $glic['nivel_glicose']. '</span>mg/dl</span>'; 
+echo $glic['nivel_glicose']. ' </span>mg/dl</span>'; 
 };
 
 function show_last_glic_desc(array $glic){ 
@@ -11,7 +11,7 @@ echo $glic['contexto'].' • '. $glic['data_horario_registro'];
 };
 
 function show_avg_glic(array $glic){
-echo round((float)$glic['avg(nivel_glicose)']). '</span>mg/dl</span>'; 
+echo round((float)$glic['avg(nivel_glicose)']). ' </span>mg/dl</span>'; 
 };
 
 function show_total_glic(array $total_glic){
@@ -19,7 +19,7 @@ echo $total_glic['count(*)']. ' medições';
 };
 
 function show_perc_in_glic_target(float $glic){
-echo '% '.$glic;
+echo $glic. '%';
 };
 
 function show_glic_meta(int $min, int $max){
