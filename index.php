@@ -10,7 +10,11 @@ require_once 'backend/includes/config_session.inc.php';
 if(!isset($_SESSION['user_id'])){
   header('Location: backend/logoff.php');
   die();
+}else{
+  header('Location: frontend/pages/painel.php');
+  die();
 }
+
 ?>
 </head>
 <body>
