@@ -58,7 +58,6 @@ $time = get_time_from_raw($raw);
 
 
 function show_meals(array $meals){
-//TODO
 $food = '';
 
     foreach($meals as $i =>$ref){
@@ -84,44 +83,36 @@ $bad='';
 switch ($cg) {
   case $cg<10:
     $bad='Baixa';
+    $txt ='verde';
     break;
   case $cg>10 and $cg<20:
     $bad='moderada';
+    $txt ='amarela';
     break;
     case $cg>20:
      $bad='Alta';
+     $txt ='vermelha';
       break;
 }
 
 
 $avs = ($bad == 'Alta') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
-var_dump('id');
-  var_dump($id);
-  var_dump('last');
-var_dump($last_id);
-var_dump('id array last');
-var_dump($meals[array_key_last($meals)]['id_refeicoes']);
-var_dump('array last');
-var_dump(array_key_last($meals));
-var_dump('i');
-var_dump($i);
-var_dump('++');
-var_dump("\n\n\n\n");
-
-if($id == $meals[array_key_last($meals)]['id_refeicoes'] && $i == array_key_last($meals) 
-  || ($last_id == $id && $id != $meals[++$i]['id_refeicoes']) ||
- $last_id == '' && $id != $meals[++$i]['id_refeicoes']){
 
 
 
-if(isset($meals[++$i]['id_refeicoes'])){
-// var_dump($meals[++$i]['id_refeicoes']);
-}
+$last_index = array_key_last($meals);
+
+$next_id = ($i < $last_index)
+    ? $meals[$i + 1]['id_refeicoes']
+    : null;
+
+if ($id !== $next_id) {
+  $food =substr($food, 0, -2);  
 echo('<div class="refeicao-recente-topo">' .
         '<div class="titulo">' . $titu . '</div>' .
-        '<span class="badge ' . 'classe.classe' . '">' . 'classe.rotulo' . '</span>' .
+        '<span class="badge ' . 'badge'. $txt . '"> CG ' . $bad . '</span>' .
       '</div>' .
-      '<div class="subtexto">' . $obs . '</div>' .
+      '<div class="subtexto">' . $food . '</div>' .
       '<div class="rodape">' . $data . ' · ' . $hora . '</div>');
 
       $food='';
