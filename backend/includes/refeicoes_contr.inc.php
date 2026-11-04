@@ -10,3 +10,7 @@ $carb_by_gram = $alimento['carb_por_grama'];
 return ($ig*($carb_by_gram*$grams)/100);
 }
 
+function get_meals(PDO $pdo, int $id){
+return get_model_meals($pdo,$id);
+}
+

@@ -16,6 +16,9 @@ try {
     if (is_input_empty($email, $pwd)) {
         $errors['empty_input'] = 'Preencha todos os campos';
     }
+    if( get_user_by_email($pdo, $email) == null){
+         $errors['invalid_user'] = 'Usuário inválido';
+    }
 
     if(!$errors){
     $result = get_user_by_email($pdo, $email);
@@ -48,8 +51,6 @@ try {
     $_SESSION['meta_max'] = (int) get_max($pdo, $_SESSION['user_id']);
     $_SESSION['last_regeneration'] = time();
 
-    $pdo = null;
-    $stmt = null;
 
     header("Location: ../frontend/pages/painel.php");
     die();

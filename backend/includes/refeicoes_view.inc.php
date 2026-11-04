@@ -46,18 +46,6 @@ switch ($cg) {
 
 
 $avs = ($bad == 'Alta') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
-var_dump('id');
-  var_dump($id);
-  var_dump('last');
-var_dump($last_id);
-var_dump('id array last');
-var_dump($meals[array_key_last($meals)]['id_refeicoes']);
-var_dump('array last');
-var_dump(array_key_last($meals));
-var_dump('i');
-var_dump($i);
-var_dump('++');
-var_dump("\n\n\n\n");
 
 if($id == $meals[array_key_last($meals)]['id_refeicoes'] && $i == array_key_last($meals) 
   || ($last_id == $id && $id != $meals[++$i]['id_refeicoes']) ||
@@ -75,7 +63,7 @@ if(isset($meals[++$i]['id_refeicoes'])){
         '<div><div class="titulo">' . $titu . '</div></div>' .
         '<div>' .
           '<span class="badge ' . $bad . '">' . $bad . ' · ' . $cg . '</span>' .
-'<form action="../del_refeicoes.php" method="POST">
+'<form action="../../backend/del_refeicoes.php" method="POST">
             <input
                 type="hidden"
                 name="id"

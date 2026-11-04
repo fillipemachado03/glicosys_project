@@ -12,11 +12,13 @@ function get_alimento_by_name(PDO $pdo, string $alimentoName) :array|null {
     return $results ? $results : null;
 };
 
-function get_meals(PDO $pdo, int $user_id){
+function get_model_meals(PDO $pdo, int $user_id){
 
-$query= 'SELECT  * from refeicoes as r 
-inner join alimentos_refeicoes as al on r.id_refeicoes = al.refeicoes_fk
-INNER join alimentos as a on al.alimentos_fk = a.id_alimentos where r.user_fk = :user_id;';
+$query='SELECT * from full_rel_ali_ref where id_users = :user_id;';
+
+// $query= 'SELECT  * from refeicoes as r 
+// inner join alimentos_refeicoes as al on r.id_refeicoes = al.refeicoes_fk
+// INNER join alimentos as a on al.alimentos_fk = a.id_alimentos where r.user_fk = :user_id;';
 
 $stmt= $pdo->prepare($query);
 $stmt->bindParam(':user_id', $user_id);
