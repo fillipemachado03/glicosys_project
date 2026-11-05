@@ -8,9 +8,12 @@
 require_once '../../backend/includes/config_session.inc.php';
 
 if(!isset($_SESSION['user_id'])){
-  header('Location: ../../backend/logoff.php');
+  header('Location: ../../backend/logoff.php'); 
   die();
 }
+require_once '../../backend/glicemia.php';
+require_once '../../backend/includes/glicemia_view.inc.php';
+var_dump($glics);
 ?>
 </head>
 <body>
@@ -84,6 +87,7 @@ if(!isset($_SESSION['user_id'])){
           </tr>
         </thead>
         <tbody id="tabela-corpo"></tbody>
+        <?php show_glic($glics);?>
       </table>
     </div>
 

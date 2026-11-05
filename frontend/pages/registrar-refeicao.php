@@ -77,7 +77,7 @@ if(!isset($_SESSION['user_id'])){
             <option value="Almoço">Almoço</option>
             <option value="Lanche">Lanche</option>
             <option value="Jantar">Jantar</option>
-            <option value="Canta">Ceia</option>
+            <option value="Ceia">Ceia</option>
           </select>
         </div>
 

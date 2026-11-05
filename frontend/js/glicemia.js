@@ -6,8 +6,8 @@ async function get_glicemia() {
       throw new Error(`Erro HTTP: ${res.status}`);
     }
 
-    let glic = await res.text();
-console.log(glic);
+    let glic = await res.json();
+console.log(glic); 
 
     return glic;
   } catch (erro) {

@@ -2,10 +2,10 @@
 declare(strict_types=1);
 
 function get_glic(PDO $pdo, int $id){
-$query='SELECT * from glicemia where user_fk = :id;';
+$query='SELECT * from glicemia where user_fk = :id order by data_horario_registro desc;';
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id',$id);
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 return $results ?? null;
-} 
+}  
