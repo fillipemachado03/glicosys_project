@@ -13,7 +13,7 @@ if(!isset($_SESSION['user_id'])){
 }
 require_once '../../backend/glicemia.php';
 require_once '../../backend/includes/glicemia_view.inc.php';
-var_dump($glics);
+
 ?>
 </head>
 <body>

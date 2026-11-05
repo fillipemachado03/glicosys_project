@@ -4,4 +4,4 @@ require_once '../../backend/includes/dbh.inc.php';
 
 
 $r = get_meals($pdo, (int)$_SESSION['user_id']);
-var_dump($r);
+$classes = get_classes_refs($r);

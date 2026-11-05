@@ -8,7 +8,12 @@ function get_data_from_raw(string $raw){
 return substr($raw, 0, 10);
 }
 
-function show_meals(array $meals){
+function show_meals(array| null $meals){
+
+if($meals == null){
+echo('Nenhuma refeição registrada');
+return;
+}
 
 $food = '';
 
@@ -19,7 +24,7 @@ $food = '';
 
 $data =get_data_from_raw($raw);
 $hora =get_time_from_raw($raw);
-
+ 
 
 $id = $ref['id_refeicoes'];
 $titu =$ref['titulo'];
@@ -34,18 +39,18 @@ $last_id ='';
 $bad='';
 switch ($cg) {
   case $cg<10:
-    $bad='Baixa';
+    $bad='Baixo';
     break;
   case $cg>10 and $cg<20:
-    $bad='moderada';
+    $bad='medio';
     break;
     case $cg>20:
-     $bad='Alta';
+     $bad='alto';
       break;
 }
 
 
-$avs = ($bad == 'Alta') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
+$avs = ($bad == 'alto') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
 
 $last_index = array_key_last($meals);
 
@@ -53,10 +58,12 @@ $next_id = ($i < $last_index)
     ? $meals[$i + 1]['id_refeicoes']
     : null;
 
+
+
 if ($id !== $next_id) {
   $food =substr($food, 0, -2);
   echo(
-      '<div class="refeicao-card">'.
+    '<div class="refeicao-card ig-'.$bad.'">'.
       '<div class="refeicao-card-topo">' .
         '<div><div class="titulo">' . $titu . '</div></div>' .
         '<div>' .
@@ -76,7 +83,7 @@ if ($id !== $next_id) {
         '<span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>' .  $hora . '</span>' .
       '</div>' .
       '<div class="descricao">' . $food . '</div>' .
-      '<div class="subtexto">Potencial de elevação glicêmica:' . $bad . '</div>' .
+      '<div class="subtexto">Potencial de elevação glicêmica: ' . (($bad =='medio') ? 'moderado' : $bad)  . '</div>' .
       ($obs ? '<div class="subtexto" style="margin-top:6px;">Obs.: ' . $obs . '</div>' : '') .
       $avs
       .'</div>');
@@ -93,8 +100,16 @@ if ($id !== $next_id) {
 $last_id = $id;
 }
  
-
-    
+function show_glic_classes(array $classes){
+  $b = $classes['baixo'];
+  $m = $classes['medio'];
+  $a = $classes['alto'];
+echo('<div class="resumo-badges" id="resumo-badges">
+ <span class="badge badge-verde">CG baixa: '. $b.'</span>
+ <span class="badge badge-laranja">CG moderada: '.$m.'</span>
+ <span class="badge badge-vermelho">CG alta: '.$a.'</span></div>
+');
+}
    
     
     

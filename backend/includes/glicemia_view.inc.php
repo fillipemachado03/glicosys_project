@@ -16,8 +16,9 @@ $lastNivel = (isset($glics[$id +1]))? $glics[$id +1]['nivel_glicose'] : null;
 
 return ($lastNivel != null and ($iNivel - $lastNivel) >0) ? $iNivel - $lastNivel : null;
 }
- 
-function show_glic(array $glics){
+
+
+function show_glic(array|null $glics){
 
 if($glics == null){
   echo('Nenhuma glicemia registrada');

@@ -72,16 +72,20 @@ require_once '../../backend/includes/refeicoes_view.inc.php';
       <a href="registrar-refeicao.php" class="btn btn-primario">+ Registrar</a>
     </div>
 
-    <div class="resumo-badges" id="resumo-badges"></div>
+    <div class="resumo-badges" id="resumo-badges">
+      <?php
+      show_glic_classes($classes);
+      ?>
+    </div>
 
-    <div id="lista-refeicoes"></div>
-
-    <?php
-    if(isset($r)){
+    <div id="lista-refeicoes">
+       <?php
       show_meals($r);
-    }
     
     ?>
+    </div>
+
+   
   </main>
 
 </div>
