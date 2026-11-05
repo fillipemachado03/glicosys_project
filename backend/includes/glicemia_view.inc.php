@@ -44,6 +44,7 @@ switch($nivGlic){
     case $nivGlic > $targetO['max']:
     $bad = 'alta';
     break;
+    default: $bad ='BAD INDEFINIDA';
   }
 
   echo(
