@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 
 function get_time_from_raw(string $raw){
-return substr($raw, 11, 9);
+return substr($raw, 11, 5);
 }
 
 function get_data_from_raw(string $raw){
@@ -18,6 +18,27 @@ return ($lastNivel != null and ($iNivel - $lastNivel) >0) ? $iNivel - $lastNivel
 }
  
 function show_glic(array $glics){
+
+if($glics == null){
+  echo('Nenhuma glicemia registrada');
+  return;
+}
+
+echo('<table>
+        
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Hora</th>
+            <th>Mg/dL</th>
+            <th>Status</th>
+            <th>Contexto</th>
+            <th>Variação</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tabela-corpo">');
+
 
 foreach($glics as $i=>$glic){  
   $id =(int) $glic['id_glicemia'];
@@ -64,7 +85,7 @@ switch($nivGlic){
             ><td><button type=submit class="btn-excluir" data-id="' . 'g.id' . '" title="Excluir"></form>' .
         '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>' .
       '</button></td>'.
-    '</tr>'
+    '</tr> </tbody>'
     );
 };
 

@@ -17,7 +17,7 @@ return true;
 return false;
 }
 
-function is_input_empty(string $data, string $time, int $value, string $cntx, int $ref, string $obs ){
+function is_input_empty(string $data, string $time, int $value, string $cntx, int|string $ref, string $obs ){
 
 if(empty($data)||empty($time)||empty($value)||empty($cntx)||empty($ref)||empty($obs)){
 return true;

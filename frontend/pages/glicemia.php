@@ -75,7 +75,8 @@ var_dump($glics);
 
     <div class="card">
       <table>
-        <thead>
+        
+        <!-- <thead>
           <tr>
             <th>Data</th>
             <th>Hora</th>
@@ -86,8 +87,9 @@ var_dump($glics);
             <th></th>
           </tr>
         </thead>
-        <tbody id="tabela-corpo"></tbody>
-        <?php show_glic($glics);?>
+        <tbody id="tabela-corpo"> -->
+          <?php show_glic($glics);?>
+        <!-- </tbody> -->
       </table>
     </div>
 

@@ -113,7 +113,7 @@ var_dump($_SESSION);
       <div id="lista-medicoes-recentes">
 <?php
 if(isset($glics)){
-show_glic($glics);}
+show_painel_glic($glics);}
 ?>
 </div>
     </div>

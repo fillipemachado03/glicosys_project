@@ -1,7 +1,7 @@
 <?php
 
 function get_time_from_raw(string $raw){
-return substr($raw, 11, 9);
+return substr($raw, 11, 5);
 }
 
 function get_data_from_raw(string $raw){

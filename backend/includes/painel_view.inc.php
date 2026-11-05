@@ -7,7 +7,7 @@ echo $glic['nivel_glicose']. ' </span>mg/dl</span>';
 
 function show_last_glic_desc(array $glic){ 
   
-echo $glic['contexto'].' • '. $glic['data_horario_registro'];
+echo $glic['contexto'].' • '. substr($glic['data_horario_registro'], 0, 11);
 };
 
 function show_avg_glic(array $glic){
@@ -27,19 +27,37 @@ echo 'Meta '.$min.'-'.$max.' </span>mg/dl</span>';
 };
 
 function get_time_from_raw(string $raw){
-return substr($raw, 11, 9);
+return substr($raw, 11, 5);
 }
 
 function get_data_from_raw(string $raw){
 return substr($raw, 0, 10);
 }
 
-function show_glic(array $glics){
+function show_painel_glic(array $glics){
 
 foreach($glics as $glic){
 $raw = $glic  ['data_horario_registro'];
 $data = get_data_from_raw($raw);
 $time = get_time_from_raw($raw);
+
+$nivGlic =(int) $glic['nivel_glicose'];
+$targetO = ['min'=>$_SESSION['meta_min'],'max'=>$_SESSION['meta_max']];
+switch($nivGlic){
+  case $nivGlic < $targetO['min']:
+    $bad = 'baixa';
+    break;
+    case $nivGlic >= $targetO['min'] and $nivGlic <= $targetO['max']:
+    $bad = 'No alvo';
+    break;
+    case $nivGlic > $targetO['max'] and $nivGlic <= $targetO['max']+20:
+    $bad = 'Elevada';
+    break;
+    case $nivGlic > $targetO['max']:
+    $bad = 'alta';
+    break;
+    default: $bad ='BAD INDEFINIDA';
+  }
 
   echo(
     '<div class= "lista-item">'.
@@ -48,7 +66,7 @@ $time = get_time_from_raw($raw);
         '<div class="valor">' . $glic['nivel_glicose'] . ' mg/dL</div>' .
         '<div class="subtexto">' . $glic['contexto'] . '</div>' .
       '</div>' .
-      '<span class="badge ' . 'status.classe' . '">' . 'status.rotulo' . '</span>'.
+      '<span class="badge ' . $bad . '">' . $bad . '</span>'.
     '</div>'
     );
 };

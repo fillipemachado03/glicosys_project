@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   refeicoes.forEach(function (r) {
     var opcao = document.createElement('option');
     opcao.value = r.id_refeicoes;
-    opcao.textContent = r.titulo + ' · ' + get_data(r.data_horario) + '' + get_time(r.data_horario);
+    opcao.textContent = r.titulo + ' · ' + get_data(r.data_horario) + ' ' + get_time(r.data_horario);
     seletorRefeicao.appendChild(opcao);
   });
 
