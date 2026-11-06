@@ -745,3 +745,8 @@ margin-bottom: 14px;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+.hide {
+  height: 0px;
+  width: 0px;
+  z-index: -999;
+}

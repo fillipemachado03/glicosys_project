@@ -18,12 +18,13 @@ return ($lastNivel != null and ($iNivel - $lastNivel) >0) ? $iNivel - $lastNivel
 }
 
 
-function show_glic(array|null $glics){
+function show_glic(array|null $glics, array|null $refs){
 
 if($glics == null){
   echo('Nenhuma glicemia registrada');
   return;
 }
+
 
 echo('<table>
         
@@ -38,7 +39,8 @@ echo('<table>
             <th></th>
           </tr>
         </thead>
-        <tbody id="tabela-corpo">');
+        <tbody id="tabela-corpo">'
+      );
 
 
 foreach($glics as $i=>$glic){  
@@ -46,10 +48,22 @@ foreach($glics as $i=>$glic){
   $nivGlic =(int) $glic['nivel_glicose'];
 $raw = $glic['data_horario_registro'];
 $cntx = $glic['contexto'];
+$refid = $glic['refeicoes_fk'];
+$obs = $glic['observacao'];
+
+foreach ($refs as $arr) {
+    if ($arr['id_refeicoes'] == $refid) {
+        $ref = ucwords($arr['titulo'], ' ');
+        break;
+    }
+}
+
 
 $variacao = (get_var($glics, $i) != null) ? '+'.get_var($glics, $i) : "—";
 
-$data = get_data_from_raw($raw);
+
+$data = new DateTimeImmutable(get_data_from_raw($raw));
+$data = $data->format('d/m/Y');
 $time = get_time_from_raw($raw);
 
 $targetO = ['min'=>$_SESSION['meta_min'],'max'=>$_SESSION['meta_max']];
@@ -59,26 +73,37 @@ switch($nivGlic){
     break;
     case $nivGlic >= $targetO['min'] and $nivGlic <= $targetO['max']:
     $bad = 'No alvo';
+    $bc ='verde';
     break;
     case $nivGlic > $targetO['max'] and $nivGlic <= $targetO['max']+20:
     $bad = 'Elevada';
+    $bc ='laranja';
     break;
     case $nivGlic > $targetO['max']:
     $bad = 'alta';
+    $bc ='vermelho';
     break;
     default: $bad ='BAD INDEFINIDA';
   }
+$cntx = $cntx =='antes de dormir' ? ucwords($cntx, ' ') : ucwords($cntx, '-') ;
+
 
   echo(
     '<tr>'.
       '<td>' . $data . '</td>' .
       '<td>' . $time . '</td>' .
       '<td><strong>' . $nivGlic . '</strong></td>' .
-      '<td><span class="badge ' . $bad . '">' . $bad . '</span></td>' .
-      '<td>' . $cntx . '</td>' .
+      '<td><span class="badge badge-' . $bc . '">' . ucfirst($bad) . '</span></td>' .
+      '<td>' . $cntx . 
+      '<span class="subtexto">
+
+      Refeição: ' .$ref.'</span>
+      <span class="subtexto">'.$obs.'</span>'.
+
+      '</td>' .
       '<td>'. '<strong>' . $variacao . '</strong>'  . '</td>' .
-      ');
-<form action="../del_glicemia.php" method="POST">
+      '
+<form action="../../backend/del_glicemia.php" method="POST">
             <input
                 type="hidden"
                 name="id"

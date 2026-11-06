@@ -22,7 +22,8 @@ $food = '';
   
 
 
-$data =get_data_from_raw($raw);
+$data = new DateTimeImmutable(get_data_from_raw($raw));
+$data = $data->format('d/m/Y');
 $hora =get_time_from_raw($raw);
  
 
@@ -40,12 +41,15 @@ $bad='';
 switch ($cg) {
   case $cg<10:
     $bad='Baixo';
+    $bc= 'verde';
     break;
   case $cg>10 and $cg<20:
     $bad='medio';
+    $bc= 'laranja';
     break;
     case $cg>20:
      $bad='alto';
+     $bc= 'vermelho';
       break;
 }
 
@@ -65,10 +69,10 @@ if ($id !== $next_id) {
   echo(
     '<div class="refeicao-card ig-'.$bad.'">'.
       '<div class="refeicao-card-topo">' .
-        '<div><div class="titulo">' . $titu . '</div></div>' .
+        '<div><div class="titulo">' . ucwords($titu) . '</div></div>' .
         '<div>' .
-          '<span class="badge ' . $bad . '"> CG ' . $bad . ' · ' . $cg . '</span>' .
-'<form action="../../backend/del_refeicoes.php" method="POST">
+          '<span class="badge badge-' . $bc . '"> CG ' . $bad . ' · ' . $cg . '</span>' .
+'<form action="../../backend/del_refeicoes.php" method="POST" class="hide">
             <input
                 type="hidden"
                 name="id"

@@ -7,7 +7,7 @@ async function get_glicemia() {
     }
 
     let glic = await res.json();
-console.log(glic); 
+// console.log(glic); 
 
     return glic;
   } catch (erro) {
@@ -27,11 +27,10 @@ async function get_glic_target() {
   }
 }
 
-get_glic_target().then(r=>{console.log(r);
-   let targetO = {min:r[0].min_meta_glicemica, max:r[0].max_meta_glicemica};
+get_glic_target().then(r=> {let targetO = {min:r[0].min_meta_glicemica, max:r[0].max_meta_glicemica};
   });
 
-get_glicemia().then(r=>console.log(r));
+// get_glicemia().then(r=>console.log(r));
 
 
 

@@ -95,7 +95,7 @@ require_once '../../backend/includes/registrar_glicemia_view.inc.php';
             <option value="jejum">Jejum</option>
             <option value="pre-prandial">Pré-Prandial</option>
             <option value="pos-prandial">Pós-Prandial</option>
-            <option value="antes-dormir">Antes de dormir</option>
+            <option value="antes de dormir">Antes de dormir</option>
           </select>
         </div>
 

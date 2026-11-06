@@ -6,3 +6,6 @@ function get_glics(PDO $pdo, int $id){
 return get_glic($pdo,$id);
 }  
  
+function get_meals(PDO $pdo, int $id){
+return get_model_meals($pdo,$id);
+}

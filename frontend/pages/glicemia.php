@@ -74,23 +74,12 @@ require_once '../../backend/includes/glicemia_view.inc.php';
     </div>
 
     <div class="card">
-      <table>
-        
-        <!-- <thead>
-          <tr>
-            <th>Data</th>
-            <th>Hora</th>
-            <th>Mg/dL</th>
-            <th>Status</th>
-            <th>Contexto</th>
-            <th>Variação</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="tabela-corpo"> -->
-          <?php show_glic($glics);?>
-        <!-- </tbody> -->
-      </table>
+
+          <?php
+          show_glic($glics, $refs);
+          ?>
+
+    
     </div>
 
   </main>

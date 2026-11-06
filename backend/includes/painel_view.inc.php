@@ -38,7 +38,8 @@ function show_painel_glic(array $glics){
 
 foreach($glics as $glic){
 $raw = $glic  ['data_horario_registro'];
-$data = get_data_from_raw($raw);
+$data = new DateTimeImmutable(get_data_from_raw($raw));
+$data = $data->format('d/m/Y');
 $time = get_time_from_raw($raw);
 
 $nivGlic =(int) $glic['nivel_glicose'];
