@@ -127,14 +127,17 @@ show_meals($ref);}
 ?>
 </div>
     </div>
+    
+<!-- Fazer re-estilização-->
+<form action='../../backend/csv.php' method="POST">
+<button type="submit">CSV</button>
+</form>
+<!-- #\#Fazer re-estilização-->
 
   </main>
 
 </div>
 
-<form action='../../backend/csv.php' method="POST">
-<button type="submit">CSV</button>
-</form>
 
 <script src="../js/store.js"></script>
 <!-- <script src="../js/comum.js"></script> -->
