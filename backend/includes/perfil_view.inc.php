@@ -23,7 +23,7 @@ echo'        <div class="campo">
 }else{
 echo'        <div class="campo">
           <label for="nome">Nome completo</label>
-          <input type="text" id="nome" name="nome" placeholder="">
+          <input type="text" id="nome" name="nome" placeholder='.$_SESSION['user_username'].'>
         </div>
 ';
 }
