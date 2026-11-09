@@ -17,7 +17,7 @@ $stmt = $pdo->prepare($query);
 $stmt->bindParam(':id',$id); 
 $stmt->execute();
 $results = $stmt->fetch(PDO::FETCH_ASSOC);
-return $results ? $results : null;
+return $results ? $results : null; 
 };
 
 function get_total_glic(PDO $pdo, int $id){

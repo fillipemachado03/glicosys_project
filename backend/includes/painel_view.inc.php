@@ -6,15 +6,16 @@ echo $glic['nivel_glicose']. ' </span>mg/dl</span>';
 };
 
 function show_last_glic_desc(array $glic){ 
-  
-echo $glic['contexto'].' • '. substr($glic['data_horario_registro'], 0, 11);
+  $data = new DateTimeImmutable($glic['data_horario_registro']);
+$data = $data->format('d/m/Y');
+echo $glic['contexto'].' • '. $data;
 };
 
 function show_avg_glic(array $glic){
 echo round((float)$glic['avg(nivel_glicose)']). ' </span>mg/dl</span>'; 
 };
 
-function show_total_glic(array $total_glic){
+function show_total_glic(array $total_glic){ 
 echo $total_glic['count(*)']. ' medições';
 };
 
@@ -47,15 +48,18 @@ $targetO = ['min'=>$_SESSION['meta_min'],'max'=>$_SESSION['meta_max']];
 switch($nivGlic){
   case $nivGlic < $targetO['min']:
     $bad = 'baixa';
+    $bc = 'vermelho';
     break;
     case $nivGlic >= $targetO['min'] and $nivGlic <= $targetO['max']:
     $bad = 'No alvo';
+    $bc = 'verde';
     break;
     case $nivGlic > $targetO['max'] and $nivGlic <= $targetO['max']+20:
-    $bad = 'Elevada';
+    $bad = 'Elevado';
     break;
     case $nivGlic > $targetO['max']:
     $bad = 'alta';
+    $bc = 'vermelho';
     break;
     default: $bad ='BAD INDEFINIDA';
   }
@@ -67,7 +71,7 @@ switch($nivGlic){
         '<div class="valor">' . $glic['nivel_glicose'] . ' mg/dL</div>' .
         '<div class="subtexto">' . $glic['contexto'] . '</div>' .
       '</div>' .
-      '<span class="badge ' . $bad . '">' . $bad . '</span>'.
+      '<span class="badge badge-' . $bc . '">' . $bad . '</span>'.
     '</div>'
     );
 };
@@ -84,7 +88,9 @@ $food = '';
   
 
 
-$data =get_data_from_raw($raw);
+$data = new DateTimeImmutable(get_data_from_raw($raw));
+$data = $data->format('d/m/Y');
+
 $hora =get_time_from_raw($raw);
 
 
@@ -101,16 +107,16 @@ $last_id ='';
 $bad='';
 switch ($cg) {
   case $cg<10:
-    $bad='Baixa';
-    $txt ='verde';
+    $txt='baixo';
+    $bad ='verde';
     break;
   case $cg>10 and $cg<20:
-    $bad='moderada';
-    $txt ='amarela';
+    $txt='moderada';
+    $bad ='laranja';
     break;
     case $cg>20:
-     $bad='Alta';
-     $txt ='vermelha';
+     $txt='Alta';
+     $bad ='vermelho';
       break;
 }
 
@@ -127,12 +133,14 @@ $next_id = ($i < $last_index)
 
 if ($id !== $next_id) {
   $food =substr($food, 0, -2);  
-echo('<div class="refeicao-recente-topo">' .
+echo('
+<div class="refeicao-recente">
+<div class="refeicao-recente-topo">' .
         '<div class="titulo">' . $titu . '</div>' .
-        '<span class="badge ' . 'badge'. $txt . '"> CG ' . $bad . '</span>' .
+        '<span class="badge ' . 'badge-'. $bad . '"> CG ' . $txt . '</span>' .
       '</div>' .
       '<div class="subtexto">' . $food . '</div>' .
-      '<div class="rodape">' . $data . ' · ' . $hora . '</div>');
+      '<div class="rodape">' . $data . ' · ' . $hora . '</div></div>');
 
       $food='';
 

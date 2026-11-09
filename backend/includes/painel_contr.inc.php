@@ -10,7 +10,7 @@ return round(((float)get_glic_in_meta($pdo,$id) / (float)get_total_glic($pdo,$id
     } catch (\Throwable $th) {
         return 0;
     }
-}
+} 
 
 function get_avg_glico(PDO $pdo, int $id){
 return get_avg_glic($pdo,$id);

@@ -17,7 +17,7 @@ require_once '../../backend/includes/painel_view.inc.php';
   // var_dump($glics);
 // var_dump($perc);
 // var_dump($ref);
-// var_dump($last_glic);
+// var_dump($last_glic); 
 // var_dump($avg_glic);
 var_dump($_SESSION);
 ?>

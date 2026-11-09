@@ -70,6 +70,7 @@ $targetO = ['min'=>$_SESSION['meta_min'],'max'=>$_SESSION['meta_max']];
 switch($nivGlic){
   case $nivGlic < $targetO['min']:
     $bad = 'baixa';
+    $bc ='vermelho';
     break;
     case $nivGlic >= $targetO['min'] and $nivGlic <= $targetO['max']:
     $bad = 'No alvo';
