@@ -19,7 +19,7 @@ $food = '';
 
     foreach($meals as $i =>$ref){
       $raw = $ref['data_horario'];
-  
+   
 
 
 $data = new DateTimeImmutable(get_data_from_raw($raw));

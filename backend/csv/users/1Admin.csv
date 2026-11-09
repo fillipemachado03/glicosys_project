@@ -1,0 +1,11 @@
+Paciente,"Tipo de DM",Mínima,Máxima
+Admin,1,200,400
+Data,Medicão,Contexto,Refeicao,Observacao
+"09/11/2026 23:03:00",200,jejum,"Cafe Da Manhã",3423
+"09/11/2026 12:21:00",122,pre-prandial,"Cafe Da Manhã",123312
+Titulo,Observacao,CG,Data,Alimentos
+"cafe da manhã",2,32,"2026-11-09 03:05:00","Lentilha cozida, "
+"cafe da manhã",12,30,"2026-11-09 12:02:00","Feijão preto cozido, "
+"cafe da manhã",12121212,65,"2026-11-09 12:21:00","Pão de forma branco, "
+"cafe da manhã",,70,"2026-11-09 12:21:00","Feijão preto cozido, Tapioca, "
+ceia,23,70,"2026-11-09 23:23:00","Maçã, Banana madura, Tapioca, "

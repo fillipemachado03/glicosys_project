@@ -8,7 +8,7 @@ echo $glic['nivel_glicose']. ' </span>mg/dl</span>';
 function show_last_glic_desc(array $glic){ 
   $data = new DateTimeImmutable($glic['data_horario_registro']);
 $data = $data->format('d/m/Y');
-echo $glic['contexto'].' • '. $data;
+echo htmlspecialchars($glic['contexto']).' • '. htmlspecialchars($data);
 };
 
 function show_avg_glic(array $glic){

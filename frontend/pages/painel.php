@@ -19,7 +19,7 @@ require_once '../../backend/includes/painel_view.inc.php';
 // var_dump($ref);
 // var_dump($last_glic); 
 // var_dump($avg_glic);
-var_dump($_SESSION);
+// var_dump($_SESSION);
 ?>
 </head>
 <body>
@@ -131,6 +131,10 @@ show_meals($ref);}
   </main>
 
 </div>
+
+<form action='../../backend/csv.php' method="POST">
+<button type="submit">CSV</button>
+</form>
 
 <script src="../js/store.js"></script>
 <!-- <script src="../js/comum.js"></script> -->

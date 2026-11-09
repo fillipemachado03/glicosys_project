@@ -64,7 +64,7 @@ return $results ? $results : null;
 
 function get_glic_in_meta(PDO $pdo, int $id){
 $meta = get_glic_meta($pdo,$id);
-var_dump($meta);
+
 
 $query = "Select count(id_glicemia) as totalMeta from glicemia where nivel_glicose between :min and :max;";
 $stmt = $pdo->prepare($query);
