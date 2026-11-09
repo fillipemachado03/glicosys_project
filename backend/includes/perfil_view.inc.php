@@ -11,7 +11,7 @@ function check_perfil_errors()
         unset($_SESSION['errors_perfil']);
     }
 }
-
+ 
 function perfil_input(){
 
 if(isset($_SESSION['perfil_data']['nome']) && !empty($_SESSION['perfil_data']['nome'])){

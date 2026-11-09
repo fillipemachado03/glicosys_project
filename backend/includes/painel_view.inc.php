@@ -20,7 +20,7 @@ echo $total_glic['count(*)']. ' medições';
 };
 
 function show_perc_in_glic_target(float $glic){
-echo $glic. '%';
+echo $glic. '%'; 
 };
 
 function show_glic_meta(int $min, int $max){
@@ -63,13 +63,16 @@ switch($nivGlic){
     break;
     default: $bad ='BAD INDEFINIDA';
   }
+  $cntx = $glic['contexto'];
+$cntx = $cntx =='antes de dormir' ? ucwords($cntx, ' ') : ucwords($cntx, '-') ;
+
 
   echo(
     '<div class= "lista-item">'.
       '<div class="data">' . $data . '<br>' . $time . '</div>' .
       '<div class="principal">' .
         '<div class="valor">' . $glic['nivel_glicose'] . ' mg/dL</div>' .
-        '<div class="subtexto">' . $glic['contexto'] . '</div>' .
+        '<div class="subtexto">' . $cntx . '</div>' .
       '</div>' .
       '<span class="badge badge-' . $bc . '">' . $bad . '</span>'.
     '</div>'
@@ -136,7 +139,7 @@ if ($id !== $next_id) {
 echo('
 <div class="refeicao-recente">
 <div class="refeicao-recente-topo">' .
-        '<div class="titulo">' . $titu . '</div>' .
+        '<div class="titulo">' . ucwords($titu) . '</div>' .
         '<span class="badge ' . 'badge-'. $bad . '"> CG ' . $txt . '</span>' .
       '</div>' .
       '<div class="subtexto">' . $food . '</div>' .

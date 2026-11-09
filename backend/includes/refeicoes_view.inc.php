@@ -54,7 +54,7 @@ switch ($cg) {
 }
 
 
-$avs = ($bad == 'alto') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
+$avs = ($bad == 'alto') ? '<div class="aviso"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><path d="M12 9v4M12 17h.01"></path></svg>Considere alimentos de menor índice glicêmico nesta refeição</div>': '';
 
 $last_index = array_key_last($meals);
 
@@ -80,7 +80,7 @@ if ($id !== $next_id) {
           '<button type= "submit" class="btn-excluir" data-id="' . $id . '" title="Excluir">' .
             '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>' .
           '</button> </form>' .
-        '</div>' .
+        '</div>' . 
       '</div>' .
       '<div class="meta">' .
         '<span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>' . $data . '</span>' .

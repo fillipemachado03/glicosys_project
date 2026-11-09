@@ -96,7 +96,7 @@ $cntx = $cntx =='antes de dormir' ? ucwords($cntx, ' ') : ucwords($cntx, '-') ;
       '<td><strong>' . $nivGlic . '</strong></td>' .
       '<td><span class="badge badge-' . $bc . '">' . ucfirst($bad) . '</span></td>' .
       '<td>' . $cntx . 
-      '<span class="subtexto">
+      '<span class="subtexto"> 
 
       Refeição: ' .$ref.'</span>
       <span class="subtexto">'.$obs.'</span>'.
@@ -112,11 +112,11 @@ $cntx = $cntx =='antes de dormir' ? ucwords($cntx, ' ') : ucwords($cntx, '-') ;
             ><td><button type=submit class="btn-excluir" data-id="' . 'g.id' . '" title="Excluir"></form>' .
         '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>' .
       '</button></td>'.
-    '</tr> </tbody>'
+    '</tr>'
     );
 };
 
-
+echo('</tbody>');
 };
 
 

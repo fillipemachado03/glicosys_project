@@ -61,7 +61,7 @@ require_once '../../backend/includes/perfil_view.inc.php';
     </div>
   </aside>
 
-  <main class="conteudo">
+  <main class="conteudo"> 
 
     <div class="cabecalho-pagina">
       <h1>Meu Perfil</h1>
@@ -95,7 +95,7 @@ perfil_input();
           <div class='medico_camp_div'>
           <!--<input type="text" id="medico" name='medico' placeholder="Dr. Nome Sobrenome"> --> </div>
         </div>
-        </div>
+       
 
         <div class="campo form-largura-total">
           <label>
@@ -119,9 +119,11 @@ perfil_input();
     check_perfil_errors();
     ?>
   </div>
+  
 
         <button type="submit" class="btn btn-primario btn-full">Salvar Perfil</button>
       </form>
+       </div>
     </div>
 
   </main>
