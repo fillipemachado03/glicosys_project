@@ -36,8 +36,7 @@ $refs = get_meals($pdo, $id);
 
 //GLICS
 
-
-
+if($glics){    
 foreach ($glics as $glic) {
 foreach ($refs as $arr) {
     $refid = $glic['refeicoes_fk'];
@@ -56,8 +55,9 @@ $data = $data->format('d/m/Y H:i:s');
     $g = [$data, $glic['nivel_glicose'], $glic['contexto'], $ref, $glic['observacao']];
     fputcsv($csv, $g, ',');
 }
-
-
+}else{
+    fputcsv($csv, ['Nenhuma medição glicêmica registrada']);
+}
 
 
 
@@ -69,6 +69,8 @@ $data = $data->format('d/m/Y H:i:s');
 
 
 fputcsv($csv, ['Titulo', 'Observacao', 'CG', 'Data', 'Alimentos'], ',');
+
+if($refs){
 $food = '';
 
 foreach ($refs as $i => $ref) {
@@ -96,6 +98,9 @@ if ($rid !== $next_id) {
       $food='';
 
 }
+}
+}else{
+    fputcsv($csv, ['Nenhuma refeição registrada']);
 }
 
 

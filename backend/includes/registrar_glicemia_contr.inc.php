@@ -11,7 +11,7 @@ return $data. ' '. $time. ':00';
 function is_data_time_invalid(string $date_time){
 $data_obj = new dateTime($date_time);
 $min = new dateTime('1970-01-01 00:00:01');
-if($data_obj <= $min || $data_obj > date("Y-m-d H:i:s")){
+if($data_obj <= $min || $data_obj < date("Y-m-d H:i:s")){
 return true;
 }
 return false;
