@@ -12,6 +12,7 @@ if(!isset($_SESSION['user_id'])){
   die();
 }
 require_once '../../backend/includes/perfil_view.inc.php';
+
 ?>
 </head>
 <body>
@@ -84,8 +85,8 @@ perfil_input();
           <div class="campo">
             <label for="tipo-dm">Tipo de Diabetes</label>
             <select name= "tipo_dm" id="tipo_dm">
-              <option value="1">Tipo 1</option>
-              <option value="2">Tipo 2</option>
+              <option value="1" <?php if($_SESSION['user_DM'] ==1) {echo('selected');}?>>Tipo 1</option>
+              <option value="2" <?php if($_SESSION['user_DM'] ==2) {echo('selected');}?>>Tipo 2</option>
             </select>
           </div>
         </div>
@@ -105,11 +106,11 @@ perfil_input();
           <div class="form-grid">
             <div class="campo">
               <label for="min">Mínimo</label>
-              <input type="number" id="min" name="meta_min">
+              <input type="number" id="min" name="meta_min" placeholder="<?php echo($_SESSION['meta_min']) ? $_SESSION['meta_min'] : ''?>">
             </div>
             <div class="campo">
               <label for="max">Máximo</label>
-              <input type="number" id="max" name="meta_max">
+              <input type="number" id="max" name="meta_max" placeholder="<?php echo($_SESSION['meta_max']) ? $_SESSION['meta_max'] : ''?>">
             </div>
           </div>
           <div class="ajuda">Padrão ADA: 80–130 mg/dL (jejum) · &lt;180 mg/dL (pós-prandial)</div>
