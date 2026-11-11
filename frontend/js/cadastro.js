@@ -8,14 +8,14 @@ async function get_medicos() {
     }
 
     let medicos = await res.json();
-    console.log(medicos);
+    // console.log(medicos);
 
     return medicos;
   } catch (erro) {
     console.log(erro);
   }
 }
-get_medicos().then(r=>console.log(r));
+// get_medicos().then(r=>console.log(r));
 
 
 function show_options(med) {

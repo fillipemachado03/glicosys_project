@@ -12,7 +12,6 @@ let meals = await res.json()
 return meals;
   }catch(error){console.log(error)}
 }
-get_ref().then(meals => console.log(meals));
 
 function get_data(raw){
 return raw.split(" ")[0]; 
