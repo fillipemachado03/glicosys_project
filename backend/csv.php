@@ -10,7 +10,7 @@ if(!isset($_SESSION['user_id'])){
 }
 
 require_once 'includes/dbh.inc.php';
-require_once 'includes/glicemia_contr.inc.php';
+require_once 'includes/csv_contr.inc.php';
 
 $id = $_SESSION['user_id'];
 
@@ -21,6 +21,7 @@ if (!is_dir($directory)) {
 }
 
 $csv = fopen($directory. $id. $_SESSION['user_username'].".csv", "w+");
+
 fputcsv($csv, ['Paciente','Tipo de DM' , 'Mínima', 'Máxima'], ',');
 fputcsv($csv, [$_SESSION['user_username'],$_SESSION['user_DM'], $_SESSION['meta_min'], $_SESSION['meta_max']], ',');
 
@@ -29,7 +30,7 @@ $header =['Data', 'Medicão', 'Contexto', 'Refeicao', 'Observacao'];
 fputcsv($csv, $header, ',');
 
 $glics = get_glics($pdo, $id);
-$refs = get_meals($pdo, $id); 
+$refs = get_refs($pdo, $id); 
 
 
 
@@ -120,5 +121,6 @@ header('Content-Disposition: attachment; filename=" glic_' . $_SESSION['user_use
 fclose($csv);
 
 readfile($directory. $id. $_SESSION['user_username'].".csv");
+unlink($directory. $id. $_SESSION['user_username'].".csv");
 die();
 
