@@ -1,0 +1,160 @@
+<?php
+declare(strict_types =1);
+
+function show_last_glic(array $glic){
+echo $glic['nivel_glicose']. ' </span>mg/dl</span>'; 
+};
+
+function show_last_glic_desc(array $glic){ 
+  $data = new DateTimeImmutable($glic['data_horario_registro']);
+$data = $data->format('d/m/Y');
+echo htmlspecialchars($glic['contexto']).' • '. htmlspecialchars($data);
+};
+
+function show_avg_glic(array $glic){
+echo round((float)$glic['avg(nivel_glicose)']). ' </span>mg/dl</span>'; 
+};
+
+function show_total_glic(array $total_glic){ 
+echo $total_glic['count(*)']. ' medições';
+};
+
+function show_perc_in_glic_target(float $glic){
+echo $glic. '%'; 
+};
+
+function show_glic_meta(int $min, int $max){
+echo 'Meta '.$min.'-'.$max.' </span>mg/dl</span>';
+};
+
+function get_time_from_raw(string $raw){
+return substr($raw, 11, 5);
+}
+
+function get_data_from_raw(string $raw){
+return substr($raw, 0, 10);
+}
+
+function show_painel_glic(array $glics){
+
+foreach($glics as $glic){
+$raw = $glic  ['data_horario_registro'];
+$data = new DateTimeImmutable(get_data_from_raw($raw));
+$data = $data->format('d/m/Y');
+$time = get_time_from_raw($raw);
+
+$nivGlic =(int) $glic['nivel_glicose'];
+$targetO = ['min'=>$_SESSION['meta_min'],'max'=>$_SESSION['meta_max']];
+switch($nivGlic){
+  case $nivGlic < $targetO['min']:
+    $bad = 'baixa';
+    $bc = 'vermelho';
+    break;
+    case $nivGlic >= $targetO['min'] and $nivGlic <= $targetO['max']:
+    $bad = 'No alvo';
+    $bc = 'verde';
+    break;
+    case $nivGlic > $targetO['max'] and $nivGlic <= $targetO['max']+20:
+    $bad = 'Elevado';
+    break;
+    case $nivGlic > $targetO['max']:
+    $bad = 'alta';
+    $bc = 'vermelho';
+    break;
+    default: $bad ='BAD INDEFINIDA';
+  }
+  $cntx = $glic['contexto'];
+$cntx = $cntx =='antes de dormir' ? ucwords($cntx, ' ') : ucwords($cntx, '-') ;
+
+
+  echo(
+    '<div class= "lista-item">'.
+      '<div class="data">' . $data . '<br>' . $time . '</div>' .
+      '<div class="principal">' .
+        '<div class="valor">' . $glic['nivel_glicose'] . ' mg/dL</div>' .
+        '<div class="subtexto">' . $cntx . '</div>' .
+      '</div>' .
+      '<span class="badge badge-' . $bc . '">' . $bad . '</span>'.
+    '</div>'
+    );
+};
+
+
+};
+
+
+function show_meals(array $meals){
+$food = '';
+
+    foreach($meals as $i =>$ref){
+      $raw = $ref['data_horario'];
+  
+
+
+$data = new DateTimeImmutable(get_data_from_raw($raw));
+$data = $data->format('d/m/Y');
+
+$hora =get_time_from_raw($raw);
+
+
+$id = $ref['id_refeicoes'];
+$titu =$ref['titulo'];
+$cg =$ref['cg'];
+$obs =$ref['observacao'];
+$food = $food.$ref['nome']. ', ';
+
+if(!isset($last_id)){
+$last_id ='';
+}
+
+$bad='';
+switch ($cg) {
+  case $cg<10:
+    $txt='baixo';
+    $bad ='verde';
+    break;
+  case $cg>10 and $cg<20:
+    $txt='moderada';
+    $bad ='laranja';
+    break;
+    case $cg>20:
+     $txt='Alta';
+     $bad ='vermelho';
+      break;
+}
+
+
+$avs = ($bad == 'Alta') ? 'Considere alimentos de menor índice glicêmico nesta refeição': '';
+
+
+
+$last_index = array_key_last($meals);
+
+$next_id = ($i < $last_index)
+    ? $meals[$i + 1]['id_refeicoes']
+    : null;
+
+if ($id !== $next_id) {
+  $food =substr($food, 0, -2);  
+echo('
+<div class="refeicao-recente">
+<div class="refeicao-recente-topo">' .
+        '<div class="titulo">' . ucwords($titu) . '</div>' .
+        '<span class="badge ' . 'badge-'. $bad . '"> CG ' . $txt . '</span>' .
+      '</div>' .
+      '<div class="subtexto">' . $food . '</div>' .
+      '<div class="rodape">' . $data . ' · ' . $hora . '</div></div>');
+
+      $food='';
+
+}
+
+$last_id = $id;
+}
+ 
+
+    }
+
+
+
+

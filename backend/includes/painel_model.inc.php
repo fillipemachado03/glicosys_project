@@ -1,0 +1,79 @@
+<?php
+declare(strict_types =1);
+
+function get_last_glic(PDO $pdo, int $id){
+$query='SELECT * from glicemia where user_fk = :id order by data_horario_registro desc limit 1;';
+$stmt= $pdo->prepare($query);
+$stmt->bindParam(':id',$id);
+$stmt->execute();
+
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+return $results ? $results : null;
+}; 
+
+function get_avg_glic(PDO $pdo, int $id){
+$query='Select avg(nivel_glicose), count(*) from glicemia where user_fk = :id;';
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id',$id); 
+$stmt->execute();
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+return $results ? $results : null; 
+};
+
+function get_total_glic(PDO $pdo, int $id){
+$query='select count(id_glicemia) total from glicemia where user_fk = :id;';
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id',$id);
+$stmt->execute();
+$results =$stmt->fetch(PDO::FETCH_ASSOC);
+return $results ? $results['total'] : null;
+};
+
+function get_meals(PDO $pdo, int $user_id){
+
+$query='SELECT * from full_rel_ali_ref where id_users = :user_id;';
+
+// $query= 'SELECT  * from refeicoes as r 
+// inner join alimentos_refeicoes as al on r.id_refeicoes = al.refeicoes_fk
+// INNER join alimentos as a on al.alimentos_fk = a.id_alimentos where r.user_fk = :user_id;';
+
+$stmt= $pdo->prepare($query);
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $results ? $results : null;
+}
+
+
+function get_glics(PDO $pdo, int $id){
+$query='SELECT * from glicemia where user_fk = :id;';
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id',$id);
+$stmt->execute();
+$results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+return $results ? $results : null;
+};
+
+function get_glic_meta(PDO $pdo, int $id){
+$query = 'select min_meta_glicemica, max_meta_glicemica from users where id_users = :id;';
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':id',$id);
+$stmt->execute();
+$results =$stmt->fetch(PDO::FETCH_ASSOC);
+return $results ? $results : null;
+};
+
+function get_glic_in_meta(PDO $pdo, int $id){
+$meta = get_glic_meta($pdo,$id);
+
+
+$query = "Select count(id_glicemia) as totalMeta from glicemia where nivel_glicose between :min and :max;";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(":min",$meta['min_meta_glicemica']);
+$stmt->bindParam(":max",$meta['max_meta_glicemica']);
+$stmt->execute();
+$results = $stmt->fetch(PDO::FETCH_ASSOC);
+return $results ? $results['totalMeta'] : null;
+}
+

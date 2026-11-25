@@ -1,0 +1,43 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ../frontend/pages/refeicao.php');
+    die();
+}
+
+$nome = strtolower($_POST['nome']);
+$data = $_POST['data']. ' '. $_POST['hora']. ':00';
+
+
+if(isset($_POST['descricao'])){
+    $observacao = $_POST['descricao'];
+} else{
+    $observacao = null;
+}
+
+try{    
+require_once 'includes/registrar_refeicao_contr.inc.php';
+require_once 'includes/dbh.inc.php';
+require_once 'includes/config_session.inc.php';
+
+$erro = [];
+
+if(in_array("", $_POST['alimento'])){
+$erro[] = "Preencha todos os campos de alimentos";
+$_SESSION['ref_errors'] = $erro;
+header('Location: ../frontend/pages/registrar-refeicao.php');
+die();
+}
+
+
+$alimentos = normalize_array(
+    $_POST['alimento'],
+    $_POST['porcoes']
+);
+
+create_meal($pdo, (int)$_SESSION['user_id'], $nome, $observacao, $data, $alimentos);
+header('Location: ../frontend/pages/refeicoes.php');
+
+die();
+}catch(PDOException $e){
+    die('Query failed: '. $e->getMessage());
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>GlicoSys - Criar conta</title>
+<link rel="stylesheet" href="../style/style.css">
+<?php
+require_once '../../backend/includes/cadastro_view.inc.php';
+require_once '../../backend/includes/config_session.inc.php';
+?>
+</head>
+<body>
+
+<div class="auth-tela">
+
+  <div class="auth-lado-verde">
+    <div class="sidebar-logo">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      GlicoSys
+    </div>
+    <h2>Controle sua glicemia com simplicidade</h2>
+    <p>Acompanhe suas medições, refeições e índice glicêmico dos alimentos em um só lugar, feito para pacientes com diabetes.</p>
+  </div>
+
+  <div class="auth-lado-form">
+    <div class="auth-card">
+      <div class="sidebar-logo">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        GlicoSys
+      </div>
+
+      <h1>Criar conta</h1>
+      <p>Preencha seus dados para começar.</p>
+
+      <form action="../../backend\cadastro.php" method="post">
+        <?php
+        signup_input();
+        ?>
+        <!-- <div class="campo">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" placeholder="Maria Silva">
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="seu@email.com">
+        </div> -->
+
+        <div class="campo campo-senha">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name='pwd' placeholder="mín. 6 caracteres">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+
+        <div class="form-linha">
+          <div class="campo">
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" name='idade' placeholder="Ex: 45">
+          </div>
+          <div class="campo">
+            <label for="tipo-dm">Tipo DM</label>
+            <select name='dm'  id="tipo-dm">
+              <option value="1">Tipo 1</option>
+              <option value="2">Tipo 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="medico">Médico responsável (opcional)</label>
+<div class='medico_camp_div'>
+          <!--<input type="text" id="medico" name='medico' placeholder="Dr. Nome Sobrenome"> --> </div>
+        </div>
+
+          
+
+  <div class="erro-auth">
+    <?php
+    check_signup_errors();
+    ?>
+  </div>
+        <button type="submit" class="btn btn-primario btn-full">Criar conta</button>
+      </form>
+
+      <p class="auth-rodape">Já tem conta? <a href="login.php">Entrar</a></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- <script src="../js/store.js"></script> -->
+<script src="../js/cadastro.js"></script>
+</body>
+</html>
