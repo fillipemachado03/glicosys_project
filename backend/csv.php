@@ -75,7 +75,7 @@ if($refs){
 $food = '';
 
 foreach ($refs as $i => $ref) {
-    $rid = $ref['id_refeicoes'];
+    $rid = $ref['id_refeicoes']; 
 $titulo = $ref['titulo'];
 $obs = $ref['observacao'];
 $cg = $ref['ig'];
@@ -95,6 +95,7 @@ $last_id ='';
 
 
 if ($rid !== $next_id) {
+      $food =substr($food, 0, -2);
     fputcsv($csv, [$titulo, $obs, $cg, $data, $food], ',');
       $food='';
 
