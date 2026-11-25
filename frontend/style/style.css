@@ -910,3 +910,12 @@ margin-bottom: 14px;
   width: 0px;
   z-index: -999;
 }
+.button-csv {
+  background: var(--verde);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+}
