@@ -909,7 +909,7 @@ margin-bottom: 14px;
   height: 0px;
   width: 0px;
   z-index: -999;
-}
+}}
 .button-csv {
   background: var(--verde);
   color: #fff;
@@ -917,5 +917,4 @@ margin-bottom: 14px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
-}
 }
