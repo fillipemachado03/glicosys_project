@@ -1,0 +1,173 @@
+
+#drop database glicosys;
+create database glicosys
+default character set utf8mb4
+default collate utf8mb4_general_ci;
+
+use glicosys;
+
+
+#medicos
+
+
+create table medicos(
+id_medicos int not null auto_increment primary key,
+nome varchar(120) not null,
+senha_hash varchar(255) not null,
+especializacao varchar(120) not null
+)default charset = utf8mb4 ,engine= InnoDB;
+
+#popula medicos
+insert into medicos(nome, especializacao, senha_hash) values
+('Genoveva', 'Pediatra', '05'),
+('Eustaquio', 'Medico', '03'),
+('Felibolas', 'Baskete e Bona', '420'),
+('Mario', 'Esconde-Esconde', '69'),
+('Nelson','Pediatra','676767'),
+('Doutor Molusco','Neurocirugiao','42'),
+('Doctor Purnell','psiquiatra e Patologia','543214')
+;
+
+#usuarios
+
+
+create table users(
+id_users int not null auto_increment primary key,
+nome varchar(120) not null,
+email varchar(120) unique not null,
+senha_hash varchar(255) not null,
+data_de_nascimento year unsigned not null,
+tipo_diabetes enum('1', '2') not null,
+min_meta_glicemica int unsigned not null,
+max_meta_glicemica int unsigned not null,
+medicos_fk int,
+
+foreign key(medicos_fk) references medicos(id_medicos)
+) default charset = utf8mb4 ,engine= InnoDB;
+
+
+#refeicoes
+
+
+create table refeicoes(
+id_refeicoes int not null auto_increment primary key,
+user_fk int not null,
+titulo varchar(40) not null,
+observacao text,
+cg int unsigned not null,
+data_horario datetime not null,
+
+
+foreign key(user_fk) references users(id_users)
+on DELETE cascade
+)default charset = utf8mb4 ,engine= InnoDB;
+
+
+#Alimentos
+
+
+create table alimentos(
+id_alimentos int not null auto_increment primary key,
+nome varchar(120) not null,
+ig int unsigned not null,
+carb_por_grama double not null
+
+
+)default charset = utf8mb4 ,engine= InnoDB;
+
+
+#Colocando Alimentos
+insert into alimentos(nome,ig, carb_por_grama) values
+('Feijão preto cozido', 30, 0.16),
+('Lentilha cozida',32, 0.2),
+('Leite integral', 31, 0.048),
+('Iogurte natural', 36, 0.045),
+('Maçã', 36, 0.14),
+('Laranja', 40, 0.11),
+('Morango',41, 0.06),
+('Uva',59, 0.15),
+('Mamão', 60, 0.09),
+('Mel', 61, 0.84),
+('Banana madura',62, 0.23),
+('Arroz branco cozido',64, 0.28),
+('Beterraba cozida', 64, 0.0875),
+('Pão de forma branco', 65, 0.47),
+('Tapioca',70, 0.34),
+('Melancia',72, 0.07),
+('Pão francês',73, 0.58),
+('Pão de queijo', 74, 0.43),
+('Batata cozida',78, 0.173),
+('Arroz branco inst.', 87, 0.3),
+('Refrigerante (cola)',90, 0.106);
+
+
+
+
+
+
+#N:N Alimentos refeicoes
+
+
+create table alimentos_refeicoes(
+alimentos_fk int not null,
+refeicoes_fk int not null,
+porcao_gramas int unsigned not null,
+
+
+foreign key(refeicoes_fk) references refeicoes(id_refeicoes) on delete cascade,
+foreign key(alimentos_fk) references alimentos(id_alimentos),
+
+
+primary key(refeicoes_fk, alimentos_fk)
+)default charset = utf8mb4 ,engine= InnoDB;
+
+#view
+
+Create or replace view full_rel_ali_ref as
+SELECT  
+u.id_users,
+r.id_refeicoes,
+a.id_alimentos,
+al.porcao_gramas,
+a.nome,
+a.ig,
+a.carb_por_grama,
+r.titulo,
+r.observacao,
+r.cg,
+r.data_horario
+ from refeicoes as r
+inner join alimentos_refeicoes as al on r.id_refeicoes = al.refeicoes_fk
+INNER join alimentos as a on al.alimentos_fk = a.id_alimentos
+Inner join users as u on r.user_fk = u.id_users;
+
+
+
+#Glicemia
+
+
+create table glicemia(
+id_glicemia int not null auto_increment primary key,
+user_fk int not null,
+data_horario_registro datetime not null,
+nivel_glicose int unsigned not null,
+contexto varchar(30) not null,
+refeicoes_fk int,
+observacao text,
+
+foreign key (user_fk) references users(id_users),
+foreign key(refeicoes_fk) references refeicoes(id_refeicoes) on delete cascade
+)default charset = utf8mb4 ,engine= InnoDB;
+
+
+#create table xx(
+#id_xx int not null auto_increment primary key,
+#)default charset = utf8mb4 ,engine= InnoDB;
+
+
+
+
+
+
+
+
