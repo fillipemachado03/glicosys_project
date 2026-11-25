@@ -913,8 +913,9 @@ margin-bottom: 14px;
 .button-csv {
   background: var(--verde);
   color: #fff;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
+  margin-top: 10px;
 }
