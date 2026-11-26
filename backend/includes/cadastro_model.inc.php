@@ -37,8 +37,8 @@ function get_user_by_email(PDO $pdo, string $email) : ?array
 
 function set_user(PDO $pdo, string $username, string $pwd, string $email, int $age, int $DM, string $medic)
 {
-    $query = 'INSERT into users(nome, email, senha_hash, data_de_nascimento, tipo_diabetes, medicos_fk)
-values (:nome, :email, :senha_hash, :data_de_nascimento, :tipo_diabetes, :medicos_fk)';
+    $query = 'INSERT into users(nome, email, senha_hash, data_de_nascimento, tipo_diabetes, medicos_fk, min_meta_glicemica, max_meta_glicemica)
+values (:nome, :email, :senha_hash, :data_de_nascimento, :tipo_diabetes, :medicos_fk, :min_meta, :max_meta)';
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':nome', $username);
@@ -49,7 +49,9 @@ values (:nome, :email, :senha_hash, :data_de_nascimento, :tipo_diabetes, :medico
     $birth_Year = get_birth_year($age);
 
 $medic_id = get_medic_id_by_name($pdo, $medic) ?? null;
-
+    
+    $stmt->bindParam(':min_meta',0);    
+    $stmt->bindParam(':max_meta',0);
     $stmt->bindParam(':senha_hash', $hashed_PWD);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':data_de_nascimento', $birth_Year);
