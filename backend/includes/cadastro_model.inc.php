@@ -50,8 +50,11 @@ values (:nome, :email, :senha_hash, :data_de_nascimento, :tipo_diabetes, :medico
 
 $medic_id = get_medic_id_by_name($pdo, $medic) ?? null;
     
-    $stmt->bindParam(':min_meta',0);    
-    $stmt->bindParam(':max_meta',0);
+$min_meta =0;
+$max_meta =0;
+
+    $stmt->bindParam(':min_meta', $min_meta);    
+    $stmt->bindParam(':max_meta',$max_meta);
     $stmt->bindParam(':senha_hash', $hashed_PWD);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':data_de_nascimento', $birth_Year);

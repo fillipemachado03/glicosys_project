@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ../frontend/pages/login.php');
     die();
-}
+} 
 
 $email = $_POST['email'];
 $pwd = $_POST['senha'];

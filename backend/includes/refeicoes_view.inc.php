@@ -44,11 +44,11 @@ switch ($cg) {
     $bc= 'verde';
     break;
   case $cg>10 and $cg<20:
-    $bad='medio'; 
+    $bad='Médio'; 
     $bc= 'laranja';
     break;
     case $cg>20:
-     $bad='alto';
+     $bad='Alto';
      $bc= 'vermelho';
       break;
 }

@@ -2,7 +2,7 @@
 $url ='localhost';
 $dbname='glicosys';
 $dbusername = 'root';
-$dbpassword = '';
+$dbpassword = 'Guri3003!';
 
 $dsn = 'mysql:host='.$url.';dbname='. $dbname;
 

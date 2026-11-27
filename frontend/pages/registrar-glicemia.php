@@ -102,7 +102,7 @@ require_once '../../backend/includes/registrar_glicemia_view.inc.php';
         <div class="campo">
           <label for="refeicao">Refeição relacionada (opcional)</label>
           <select id="refeicao" name="refeicao">
-            <option value="">Nenhuma</option>
+            <option value="null">Nenhuma</option>
           </select>
           <p class="ajuda">Ao vincular uma refeição, você pode identificar depois qual medição corresponde a ela.</p>
         </div>

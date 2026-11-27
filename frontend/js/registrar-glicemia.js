@@ -13,11 +13,18 @@ return meals;
   }catch(error){console.log(error)}
 }
 
+function get_data_formated(raw){
+let data =new Date(raw.split(" ")[0]);
+data = data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  return data ;
+}
+
 function get_data(raw){
-return raw.split(" ")[0]; 
+
+  return raw.split(" ")[0]
 }
 function get_time(raw){
-return raw.split(" ")[1];
+return raw.split(" ")[1]
 }
 
 /* GlicoSys - lógica do formulário Registrar Glicemia */
@@ -32,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     opcao.value = r.id_refeicoes;
     opcao.textContent = r.titulo + ' · ' + get_data(r.data_horario) + ' ' + get_time(r.data_horario);
     seletorRefeicao.appendChild(opcao);
-  });
+  }); 
 
   var dataInput = document.getElementById('data');
   if (dataInput && !dataInput.value) dataInput.value = new Date().toISOString().slice(0, 10);

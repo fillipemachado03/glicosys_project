@@ -3,7 +3,7 @@
 if($_SERVER['REQUEST_METHOD'] !== 'POST'){
     header('Location: ../frontend/pages/cadastro.php');
     die();
-}
+} 
 
 $username = $_POST['nome'];
 $pwd = $_POST['pwd'];

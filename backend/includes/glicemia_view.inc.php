@@ -50,6 +50,9 @@ $raw = $glic['data_horario_registro'];
 $cntx = $glic['contexto'];
 $refid = $glic['refeicoes_fk'];
 $obs = $glic['observacao'];
+if($refid == null){
+  $ref = "Não informado";
+}
 
 foreach ($refs as $arr) {
     if ($arr['id_refeicoes'] == $refid) {

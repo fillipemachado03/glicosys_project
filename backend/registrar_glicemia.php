@@ -17,7 +17,7 @@ require_once 'includes/registrar_glicemia_contr.inc.php';
 
 $errors = [];
 
-if(is_input_empty($data, $time, $value, $cntx, $ref, $obs)){
+if(is_input_empty($data, $time, $value, $cntx)){
     $errors['empty_input'] = 'Preencha todos os campos.';
 }
 
