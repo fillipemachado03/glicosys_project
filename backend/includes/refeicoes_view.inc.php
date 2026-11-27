@@ -44,7 +44,7 @@ switch ($cg) {
     $bc= 'verde';
     break;
   case $cg>10 and $cg<20:
-    $bad='medio';
+    $bad='medio'; 
     $bc= 'laranja';
     break;
     case $cg>20:

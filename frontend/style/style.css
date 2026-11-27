@@ -919,3 +919,12 @@ margin-bottom: 14px;
   font-weight: 600;
 }
 }
+.button-csv {
+  background: var(--verde);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+}
